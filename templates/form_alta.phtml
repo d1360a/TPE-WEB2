@@ -1,0 +1,31 @@
+<!-- form para noticias -->
+<form action="">
+     <label for="">titulo</label>
+     <input type="text">
+
+     <label for="">contenido</label>
+     <input type="text">
+
+     <label for="">fecha</label>
+     <input type="text">
+
+     <label for="">hora</label>
+     <input type="text">
+
+     <label for="">seccion</label>
+     <select name="" id="">
+          <?php foreach($secciones as $seccion): ?>
+               <option value=""> <?= $seccion->nombre ?> </option>
+          <?php endforeach; ?>
+     </select>
+
+     <button type="submit">Agregar</button>
+</form>
+
+<!-- form para secciones -->
+<form action="">
+     <label for="">nombre</label>
+     <input type="text">
+
+     <button type="submit">Agregar</button>
+</form>
