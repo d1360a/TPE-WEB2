@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-10-2023 a las 16:46:23
+-- Tiempo de generación: 23-09-2023 a las 19:43:36
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -36,13 +36,6 @@ CREATE TABLE `noticias` (
   `id_seccion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `noticias`
---
-
-INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `fecha`, `hora`, `id_seccion`) VALUES
-(1, 'Larroque, sobre el escándalo Insaurralde: \"Siempre que se administra poder se está expuesto a tentaciones\"', 'En pleno escándalo del exjefe de Gabinete bonaerense, Martín Insaurralde, por sus lujosas vacaciones junto a la modelo, Sofía Clerici, en Marbella, España, el ministro de Desarrollo de la Comunidad provincial, Andrés “Cuervo” Larroque, hizo llamativas declaraciones sobre el exfuncionario: “Siempre que se administra el poder se está expuesto a tentaciones, y en algún caso puede haber una decepción”.\r\n\r\nEl funcionario bonaerense buscó despegar, en campaña, al gobernador Axel Kicillof y al oficialismo.', '10/10/23', '13:52:00', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -54,18 +47,6 @@ CREATE TABLE `seccion` (
   `nombre_seccion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `seccion`
---
-
-INSERT INTO `seccion` (`id_seccion`, `nombre_seccion`) VALUES
-(1, 'politica'),
-(2, 'economica'),
-(3, 'deporte'),
-(5, 'techno'),
-(6, 'policiales'),
-(7, 'cultura');
-
 -- --------------------------------------------------------
 
 --
@@ -76,7 +57,7 @@ CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `rol` tinyint(4) NOT NULL
+  `rol` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -87,14 +68,14 @@ CREATE TABLE `usuario` (
 -- Indices de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `CLAVE FORANEA` (`id_seccion`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  ADD PRIMARY KEY (`id_seccion`);
+  ADD PRIMARY KEY (`id_seccion`),
+  ADD KEY `CLAVE FORANEA` (`id_seccion`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -104,23 +85,23 @@ ALTER TABLE `seccion`
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `noticias`
+-- Filtros para la tabla `seccion`
 --
-ALTER TABLE `noticias`
-  ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`);
+ALTER TABLE `seccion`
+  ADD CONSTRAINT `seccion_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `noticias` (`id_seccion`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
