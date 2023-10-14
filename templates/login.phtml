@@ -1,10 +1,17 @@
-<!-- form para login -->
-<form action="">
-     <label for="">usuario</label>
-     <input type="text">
 
-     <label for="">contraseña</label>
-     <input type="text">
+<?php require('./templates/header.phtml'); ?>
+
+<!-- form para login -->
+<form action="auth" method="POST">
+     <label for="username">Nombre de usuario</label>
+     <input type="text" name="username" id="username" required>
+
+     <label for="password">Contraseña</label>
+     <input type="text" name="password" id="password" required>
+
+     
 
      <button type="submit">Iniciar sesion</button>
 </form>
+
+<?php require('./templates/footer.phtml'); ?>
