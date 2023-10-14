@@ -27,13 +27,10 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-    case 'editar':
+    
+     case 'detalle':
         $controller = new NewsController();
-        //habria que agregar unna funcion editar
-        break;
-    case 'finalizar':
-        $controller = new NewsController();
-        $controller->finishNews($params[1]);
+        $controller->detailNews($params[1]);
         break;
 
     //case 'login':
