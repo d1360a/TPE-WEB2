@@ -1,31 +1,47 @@
 <!-- form para noticias -->
-<form action="">
-     <label for="">titulo</label>
-     <input type="text">
+<form action="agregar" method="POST">
 
-     <label for="">contenido</label>
-     <input type="text">
+     <div class="mb-3">
+          <label for="" class="form-label">Título de la noticia</label>
+          <input name="title" type="text" class="form-control">
+     </div>
 
-     <label for="">fecha</label>
-     <input type="text">
+     <div class="mb-3">
+          <label for="" class="form-label">Contenido</label>
+          <input name="content" type="text" class="form-control">
+     </div>
 
-     <label for="">hora</label>
-     <input type="text">
+     <div class="mb-3">
+          <label for="" class="form-label">Fecha</label>
+          <input name="date" type="date" class="form-control">
 
-     <label for="">seccion</label>
-     <select name="" id="">
-          <?php foreach($secciones as $seccion): ?>
-               <option value=""> <?= $seccion->nombre ?> </option>
-          <?php endforeach; ?>
-     </select>
+          <label for="" class="form-label">Hora</label>
+          <input name="hour" type="hour" class="form-control">
+     </div>
 
-     <button type="submit">Agregar</button>
+     <div class="mb-3">
+          <label for="" class="form-label">Sección</label>
+          <select name="id_section" id="" class="form-select" aria-label="Default select example">
+               <option value="1">   Politica </option>
+               <option value="2">  Economia </option>
+
+               <!-- <?php foreach($secciones as $seccion): ?>
+                    <option value=""> <?= $seccion->nombre ?> </option>
+               <?php endforeach; ?>  -->
+          </select>
+     </div>
+     
+
+     <button type="submit" class="btn btn-success">Agregar</button>
 </form>
 
 <!-- form para secciones -->
-<form action="">
-     <label for="">nombre</label>
+<form action="" >
+     <div class="mb-3">
+     <label for="">Nueva sección</label>
      <input type="text">
 
-     <button type="submit">Agregar</button>
+     <button type="submit" class="btn btn-success">Agregar</button>
+     </div>
+     
 </form>
