@@ -9,15 +9,14 @@
 
 
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-2 p-2">
+    <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
         <?php foreach($newss as $news): ?>
             <div class="col border p-3">
-                <b><?= $news->titulo ?></b>
-
+                <a href="detalle/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
                 <?php if(isset($_SESSION['USERNAME'])): ?>
-                <div class="actions">
-                    <a href="eliminar/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
-                </div>
+                    <div class="actions">
+                        <a href="eliminar/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
+                    </div>
                 <?php endif ?>
             </div>
         <?php endforeach ?>

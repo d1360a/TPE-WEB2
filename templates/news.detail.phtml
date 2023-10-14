@@ -1,0 +1,22 @@
+<?php require 'templates/header.phtml' ?>
+
+
+<div class="container">
+    
+    <?php if ($news !== false) { ?>
+        <h1><?= $news->titulo ?></h1>
+        <small><?= $news->fecha ?></small>
+        <small><?= $news->hora ?></small>
+        <div class="mt-1 p-2">
+            <p class="lead"><?= $news->contenido ?></p>
+        </div>
+        
+    <?php } else { ?>
+        <p>La noticia no fue encontrada o no está disponible.</p>
+    <?php } ?>
+    
+    <a href="../listar">Volver a Página principal</a>    
+
+</div>
+
+<?php require 'templates/footer.phtml' ?>

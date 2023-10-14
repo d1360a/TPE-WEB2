@@ -25,10 +25,17 @@ class NewsModel {
     }
 
     
-    
     function deleteNews($id) {
         $query = $this->db->prepare('DELETE FROM noticias WHERE id = ?');
         $query->execute([$id]);
+    }
+
+    
+    function getNewsById($id) {
+        $query = $this->db->prepare('SELECT * FROM noticias WHERE id = :id');
+        $query->execute([':id' => $id]);
+
+        return $query->fetch(PDO::FETCH_OBJ);
     }
 
 }
