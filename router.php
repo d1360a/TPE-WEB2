@@ -36,10 +36,14 @@ switch ($params[0]) {
         $controller->finishNews($params[1]);
         break;
 
-    //case 'login':
-    //    break;
-    //case 'auth':
-    //    break;
+    case 'login':
+        $controller = new Auth_controller();
+        $controller ->showLogin();
+        break;
+    case 'auth':
+        $controller = new Auth_controller();
+        $controller->authenticateUser();    
+        break;
     //case 'logout':
     //    break;
     default: 
