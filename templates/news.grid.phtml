@@ -1,10 +1,11 @@
 <?php require 'templates/header.phtml' ?>
-<?php require 'templates/form_alta.phtml' ?>
 
 
 <?php if(isset($_SESSION['USER_ID'])): ?>
-                <?php require 'templates/form_alta.phtml' ?>
+    <?php require 'templates/form_alta.phtml' ?>
 <?php endif?>
+
+
 
 
 <div class="container">
@@ -12,9 +13,12 @@
         <?php foreach($newss as $news): ?>
             <div class="col border p-3">
                 <b><?= $news->titulo ?></b>
+
+                <?php if(isset($_SESSION['USERNAME'])): ?>
                 <div class="actions">
                     <a href="eliminar/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
                 </div>
+                <?php endif ?>
             </div>
         <?php endforeach ?>
     </div>

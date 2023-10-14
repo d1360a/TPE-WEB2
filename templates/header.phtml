@@ -1,3 +1,4 @@
+<?= AuthHelper::initiate_session() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,20 +15,25 @@
 <header>
      <nav class="navbar navbar-dark bg-dark">
 
-          <a class="navbar-brand" href="">Portal de Noticias</a>
+          <a class="navbar-brand" href="listar">Portal de Noticias</a>
+          <?php if(isset($_SESSION['USER_ID'])): ?>
+          <h2 class="navbar-brand">Hola, <?=$_SESSION['USERNAME']?></h2>
+          <?php else: ?>
+          
+          <?php endif; ?>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">  
                <ul class="navbar-nav">
                    
-                    <?php if (!isset($_SESSION['USER_ID'])) : ?>
+                    <?php if(!isset($_SESSION['USER_ID'])): ?>
                          <li class="nav-item">
                               <a class="nav-link" aria-current="page" href="login">Login</a>
                          </li>
-                    <?php else : ?>
+                    <?php else: ?>
                          <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="logout">Logout (<?= $_SESSION['EMAIL'] ?>)</a>
+                              <a class="nav-link" aria-current="page" href="logout">Logout</a>
                               <a class="nav-link" aria-current="page" href="">Agregar noticias</a>
                          </li>
                     <?php endif ?>

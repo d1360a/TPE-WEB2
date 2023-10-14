@@ -12,8 +12,8 @@ class AuthHelper {
      #se guardan datos del usuario en superglobales session
      public static function login_user($user){
           AuthHelper::initiate_session();
-          $_SESSION['USERNAME'] = $user -> nombre;
-          $_SESSION['USER_ID'] = $user -> id_usuario;
+          $_SESSION['USERNAME'] = $user->nombre;
+          $_SESSION['USER_ID'] = $user->id_usuario;
      }
 
      #cerrar la session
@@ -24,9 +24,8 @@ class AuthHelper {
 
      #verificar si el usuario esta logueado
      public static function verify_user(){
-          AuthHelper::initiate_session();
           if(!isset($_SESSION['USER_ID'])){
-               header('Location: ' . BASE_URL . 'login');
+               header('Location: ' . BASE_URL);
                die();
           }
      }

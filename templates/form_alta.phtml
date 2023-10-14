@@ -1,5 +1,6 @@
 <!-- form para noticias -->
-<form action="agregar" method="POST">
+
+<form id="news-form" action="agregar" method="POST">
 
      <div class="mb-3">
           <label for="" class="form-label">Título de la noticia</label>
@@ -20,28 +21,24 @@
      </div>
 
      <div class="mb-3">
-          <label for="" class="form-label">Sección</label>
-          <select name="id_section" id="" class="form-select" aria-label="Default select example">
-               <option value="1">   Politica </option>
-               <option value="2">  Economia </option>
-
-               <?php foreach($secciones as $seccion): ?>
-                    <option value=""> <?= $seccion->nombre ?> </option>
-               <?php endforeach; ?> 
-          </select>
+          <?php require './app/controller/section.controller.php';
+          $section = new SectionController();
+          ?>
      </div>
-     
 
-     <button type="submit" class="btn btn-success">Agregar</button>
+     <div>
+          <button type="submit" class="btn btn-success">Agregar</button>
+          <button type="button" class="btn btn-danger" id="btn-cancelar">Cancelar</button>
+     </div>
 </form>
 
 <!-- form para secciones -->
-<form action="" >
+<form action="">
      <div class="mb-3">
-     <label for="">Nueva sección</label>
-     <input type="text">
+          <label for="">Nueva sección</label>
+          <input type="text">
 
-     <button type="submit" class="btn btn-success">Agregar</button>
+          <button type="submit" class="btn btn-success">Agregar</button>
      </div>
-     
+
 </form>
