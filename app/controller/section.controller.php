@@ -15,6 +15,13 @@
           $sections = $this->model->getSections();
           $this->view->showForm($sections);
       }
+      public function addSection(){
+        #validacion de datos del form
+
+
+
+        $this->model->insertSection();
+      }
 
   }
   

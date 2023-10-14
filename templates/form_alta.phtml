@@ -4,20 +4,20 @@
 
      <div class="mb-3">
           <label for="" class="form-label">Título de la noticia</label>
-          <input name="title" type="text" class="form-control">
+          <input name="title" type="text" class="form-control" required>
      </div>
 
      <div class="mb-3">
           <label for="" class="form-label">Contenido</label>
-          <input name="content" type="text" class="form-control">
+          <input name="content" type="text" class="form-control" required>
      </div>
 
      <div class="mb-3">
           <label for="" class="form-label">Fecha</label>
-          <input name="date" type="date" class="form-control">
+          <input name="date" type="date" class="form-control" required>
 
           <label for="" class="form-label">Hora</label>
-          <input name="hour" type="hour" class="form-control">
+          <input name="hour" type="hour" class="form-control" required>
      </div>
 
      <div class="mb-3">
@@ -33,12 +33,11 @@
 </form>
 
 <!-- form para secciones -->
-<form action="">
+<form action="agregar-seccion">
      <div class="mb-3">
-          <label for="">Nueva sección</label>
-          <input type="text">
-
-          <button type="submit" class="btn btn-success">Agregar</button>
+                    <label for="seccion-nombre" class="form-label">Nueva sección</label>
+                    <input class="form-control" type="text" name="section-name" placeholder="Nombre la nueva seccion" id="seccion-nombre" required>
+                    <button type="submit" class="btn btn-success">Agregar</button>
      </div>
 
 </form>

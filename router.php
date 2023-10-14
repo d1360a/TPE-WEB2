@@ -36,6 +36,10 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->finishNews($params[1]);
         break;
+    case 'agregar-seccion':
+        $controller = new SectionController();
+        $controller->addSection();
+        break;
 
     case 'login':
         $controller = new Auth_controller();

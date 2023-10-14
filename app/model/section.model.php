@@ -14,4 +14,8 @@ class Section_model{
           return $query->fetchAll(PDO::FETCH_OBJ);
      }
 
+     public function insertSection(){
+          
+     }
+
 }

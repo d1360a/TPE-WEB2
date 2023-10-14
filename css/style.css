@@ -10,3 +10,10 @@ form{
     justify-content: center;
 }
 
+.form-add-sec {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+}
+
