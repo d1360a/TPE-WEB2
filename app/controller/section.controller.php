@@ -10,6 +10,8 @@ class SectionController
   private $view;
   private $modelNews;
 
+
+
   public function __construct()
   {
     $this->model = new Section_model();
@@ -35,10 +37,16 @@ class SectionController
   {
     #traemos datos de una sola seccion
     $section = $this->model->getSectionsById($id);
-    
+
     #traemos las noticias
     $news = $this->modelNews->getNewsBySectionId($section->id_seccion);
-    
+
     $this->view->show_section_page($section, $news);
+  }
+
+  public function deleteSection($idSection){
+
+    $this->model->delete_section($idSection);
+    header('Location: ' . BASE_URL . '/listar');
   }
 }

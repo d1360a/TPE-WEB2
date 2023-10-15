@@ -19,5 +19,8 @@ class Section_view {
           require('./templates/section.page.phtml');
           
      }
+     public function show_error_section($error = null){
+          require('./templates/error.phtml');
+     }
 
 }

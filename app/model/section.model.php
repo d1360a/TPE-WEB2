@@ -7,6 +7,7 @@ class Section_model{
           $this -> database = new PDO('mysql:host=localhost;dbname=db_diario;charset=utf8', 'root', '');
      }
 
+     //recupera todas las secciones de la tabla
      public function getSections(){
           $query = $this->database->prepare('SELECT * FROM seccion');
           $query ->execute();
@@ -14,6 +15,7 @@ class Section_model{
           return $query->fetchAll(PDO::FETCH_OBJ);
      }
 
+     //recupera todos los datos de una seccion
      public function getSectionsById($id){
           $query = $this->database->prepare('SELECT * FROM seccion WHERE id_seccion = ?');
           $query->execute([$id]);
@@ -26,6 +28,9 @@ class Section_model{
           $query->execute([$sectionNAME]);
      }
 
-
+     public function delete_section($id){
+          $query = $this->database->prepare('DELETE FROM seccion WHERE id_seccion = ?');
+          $query->execute([$id]);
+     }
 
 }

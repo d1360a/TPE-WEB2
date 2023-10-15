@@ -3,10 +3,10 @@ require_once('./app/controller/news.controller.php');
 require_once('./app/controller/auth.controller.php');
 require_once('./app/controller/section.controller.php');
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
 
-$action = 'listar'; 
-if (!empty( $_GET['action'])) {
+$action = 'listar';
+if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
@@ -27,7 +27,12 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-     case 'detalle':
+
+    case 'eliminar-seccion':
+        $controller = new SectionController();
+        $controller->deleteSection($params[1]);
+        break;
+    case 'detalle':
         $controller = new NewsController();
         $controller->detailNews($params[1]);
         break;
@@ -40,19 +45,18 @@ switch ($params[0]) {
         $controller->showSectionPage($params[1]);
         break;
 
-
     case 'login':
         $controller = new Auth_controller();
-        $controller ->showLogin();
+        $controller->showLogin();
         break;
     case 'auth':
         $controller = new Auth_controller();
-        $controller->authenticateUser();    
+        $controller->authenticateUser();
         break;
     case 'logout':
         $controller = new Auth_controller();
         $controller->logout();
         break;
-    default: 
+    default:
         break;
 }

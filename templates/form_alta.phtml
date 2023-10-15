@@ -8,8 +8,6 @@
      </div>
 
      <div class="mb-3">
-          <!-- <label for="" class="form-label">Contenido</label>
-          <input name="content" type="text" class="form-control" autocomplete="off" required> -->
 
           <label class="form-label" for="textarea">Contenido</label>
           <textarea name="content" class="form-control" id="textarea" autocomplete="off" required></textarea>
@@ -34,20 +32,26 @@
 </form>
 
 <!-- form para secciones -->
-<form action="agregar-seccion" method="POST">
+<form action="agregar-seccion" method="POST" class="form-add-section">
      <div class="mb-3">
           <label for="seccion-nombre" class="form-label">Nueva sección</label>
           <input class="form-control" type="text" name="section_name" placeholder="Nombre la nueva seccion" id="seccion-nombre" autocomplete="off" required>
      </div>
      <button type="submit" class="btn btn-success">Agregar</button>
-
 </form>
 
-<!-- form para buscar secciones -->
-<form>
-     <div class="mb-3"> 
-          <label for="search">Buscar</label>
-          <input type="search" name="section_searched" id="search" class="form-control" autocomplete="off">
-     </div>
-     <button class="btn btn-success" type="submit">Buscar</button>
-</form>
+<div class="sections-card">
+          <ul>
+               <?php foreach($sections as $section) : ?>
+                    <li>
+                         <div>
+                             <p><?= $section->nombre_seccion ?></p>
+                         </div>
+                         <div class="actions">
+                              <a class="btn btn-danger" href="eliminar-seccion/<?= $section->id_seccion ?>">Eliminar</a>
+                              <a class="btn btn-success" href="editar-seccion/<?= $section->id_seccion ?>">Editar</a>
+                         </div>
+                    </li>
+               <?php endforeach; ?>
+          </ul>
+</div>
