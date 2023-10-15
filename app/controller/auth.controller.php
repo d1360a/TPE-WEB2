@@ -17,6 +17,7 @@ class Auth_controller {
      #login
      public function showLogin(){
           $this -> view -> show_view_login();
+          
      }
 
      public function authenticateUser(){

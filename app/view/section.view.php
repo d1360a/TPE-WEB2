@@ -9,7 +9,9 @@ class Section_view {
           require('./templates/section.view.phtml');
      }
 
+     #muestra la lista de secciones en el header
      public function show_section_list($section_data){
+          
           require('./templates/lista.secciones.phtml');
      }
 

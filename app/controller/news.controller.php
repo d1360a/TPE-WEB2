@@ -19,7 +19,9 @@
         public function showNews() {
             $sections = $this->modelSection->getSections();
             $newss = $this->model->getNews();
-            $this->view->showNews($newss, $sections);
+
+                $this->view->showNews($newss, $sections);
+
         }
   
         public function addNews() {
