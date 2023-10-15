@@ -29,6 +29,7 @@
             $date = $_POST['date'];
             $hour = $_POST['hour'];
             $id_section = $_POST['id_section'];
+
          
             if (empty($title) || empty($content)|| empty($date)|| empty($hour)|| empty($id_section)) {
                 $this->view->showError("Debe completar todos los campos");
@@ -36,6 +37,9 @@
             }
     
             $id = $this->model->insertNews($title, $content, $date, $hour, $id_section);
+
+
+
             if ($id) {
                 header('Location: ' . BASE_URL);
             } else {

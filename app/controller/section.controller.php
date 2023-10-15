@@ -19,8 +19,9 @@ class SectionController
   public function addSection()
   {
     #validacion de datos del form
-
-    $this->model->insertSection();
+    $sectionName = $_POST['section_name'];
+    $this->model->insertSection($sectionName);
+    header('Location:' . BASE_URL);
   }
 
   public function showSection($id_section)

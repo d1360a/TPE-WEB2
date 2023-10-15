@@ -18,7 +18,7 @@ class NewsModel {
     }
 
     function insertNews($title, $content, $date, $hour, $id_section) {
-        $query = $this->db->prepare('INSERT INTO noticias ( titulo, contenido, fecha, hora, id_seccion) VALUES(?,?,?,?,?)');
+        $query = $this->db->prepare('INSERT INTO noticias(titulo, contenido, fecha, hora, id_seccion) VALUES(?,?,?,?,?)');
         $query->execute([$title, $content, $date, $hour, $id_section]);
 
         return $this->db->lastInsertId();

@@ -21,8 +21,9 @@ class Section_model{
           return $query->fetch(PDO::FETCH_OBJ);
      }
 
-     public function insertSection(){
-          
+     public function insertSection($sectionNAME){
+          $query = $this->database->prepare('INSERT INTO seccion(nombre_seccion) VALUES(?)');
+          $query->execute([$sectionNAME]);
      }
 
 
