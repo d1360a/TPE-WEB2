@@ -19,3 +19,7 @@ form{
     align-items: center;
 }
 
+img {
+    height: 50px;
+    width: 50px;
+}
