@@ -13,6 +13,10 @@
         <?php foreach($newss as $news): ?>
             <div class="col border p-3">
                 <a href="detalle/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
+                <?php foreach ($sections as $section) : ?>
+                    <option value="<?= $section->id_seccion ?>"> <?= $section->nombre_seccion ?> </option>
+                 <?php endforeach; ?>
+
                 <?php if(isset($_SESSION['USERNAME'])): ?>
                     <div class="actions">
                         <a href="eliminar/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>

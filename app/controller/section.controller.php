@@ -9,8 +9,8 @@
       private $view;
   
       public function __construct() {  
-          $this->model = new Section_model();
-          $this->view = new Section_view();
+          $this->model = new SectionModel();
+          $this->view = new SectionView();
 
           $sections = $this->model->getSections();
           $this->view->showForm($sections);

@@ -1,6 +1,6 @@
 <?php
 
-class Section_model{
+class SectionModel{
      private $database;
 
      public function __construct(){
@@ -16,6 +16,14 @@ class Section_model{
 
      public function insertSection(){
           
+     }
+
+     public function getSectionNameById($id){
+          $query = $this->database->prepare('SELECT * FROM seccion WHERE id_seccion = :id');
+      
+          $query->execute([':id' => $id]);
+
+        return $query->fetch(PDO::FETCH_ASSOC);
      }
 
 }

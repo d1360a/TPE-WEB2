@@ -2,7 +2,7 @@
 
    require_once('app/view/news.view.php');
    require_once('app/view/news.detail.php');
-   require_once('app/model/news.model.php');  
+   require_once('app/model/news.model.php');
 
     class NewsController {
         private $model;
