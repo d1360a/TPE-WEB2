@@ -1,7 +1,7 @@
 <?php
 require_once('./app/controller/news.controller.php');
 require_once('./app/controller/auth.controller.php');
-
+require_once('./app/controller/section.controller.php');
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -19,7 +19,6 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->showNews();
         break;
-
     case 'agregar':
         $controller = new NewsController();
         $controller->addNews();
@@ -28,7 +27,6 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-    
      case 'detalle':
         $controller = new NewsController();
         $controller->detailNews($params[1]);
@@ -36,6 +34,10 @@ switch ($params[0]) {
     case 'agregar-seccion':
         $controller = new SectionController();
         $controller->addSection();
+        break;
+    case 'seccion':
+        $controller = new SectionController();
+        $controller->showSectionPage($params[1]);
         break;
 
     case 'login':

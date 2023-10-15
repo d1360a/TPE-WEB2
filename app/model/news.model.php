@@ -38,4 +38,11 @@ class NewsModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
+    public function getNewsBySectionId($sectionID){
+        $query = $this->db->prepare('SELECT * FROM noticias WHERE id_seccion = ?');
+        $query->execute([$sectionID]);
+
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
 }

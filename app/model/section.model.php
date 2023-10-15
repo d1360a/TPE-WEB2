@@ -14,8 +14,17 @@ class Section_model{
           return $query->fetchAll(PDO::FETCH_OBJ);
      }
 
+     public function getSectionsById($id){
+          $query = $this->database->prepare('SELECT * FROM seccion WHERE id_seccion = ?');
+          $query->execute([$id]);
+
+          return $query->fetch(PDO::FETCH_OBJ);
+     }
+
      public function insertSection(){
           
      }
+
+
 
 }
