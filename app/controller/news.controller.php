@@ -58,6 +58,10 @@
             $detailView->newsDetail($news);
         }
 
+        public function searchSection(){
+            
+        }
+
             
     }
     

@@ -40,6 +40,7 @@ switch ($params[0]) {
         $controller->showSectionPage($params[1]);
         break;
 
+
     case 'login':
         $controller = new Auth_controller();
         $controller ->showLogin();
