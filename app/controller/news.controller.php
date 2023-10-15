@@ -2,20 +2,24 @@
 
    require_once('app/view/news.view.php');
    require_once('app/view/news.detail.php');
-   require_once('app/model/news.model.php');
+   require_once('app/model/news.model.php');  
+   require_once('app/model/section.model.php');
 
     class NewsController {
         private $model;
         private $view;
+        private $modelSection;
   
         public function __construct() {  
             $this->model = new NewsModel();
             $this->view = new NewsView();
+            $this->modelSection = new SectionModel();
         }
   
         public function showNews() {
+            $sections = $this->modelSection->getSections();
             $newss = $this->model->getNews();
-            $this->view->showNews($newss);
+            $this->view->showNews($newss, $sections);
         }
   
         public function addNews() {

@@ -1,0 +1,28 @@
+<?php require('./templates/header.phtml'); ?>
+
+<main class="cuerpo-seccion-pagina">
+     <h1> <?= $section->nombre_seccion ?> </h1>
+
+
+     <div class="container">
+          <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
+
+               <?php foreach ($news as $new): ?>
+                    <div class="col border p-3">
+
+                         <a href="../detalle/<?= $new->id ?>"><b><?= $new->titulo ?></b></a>
+
+                         <?php if (isset($_SESSION['USERNAME'])) : ?>
+                              <div class="actions">
+                                   <a href="eliminar/<?= $new->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
+                              </div>
+                         <?php endif ?>
+                    </div>
+               <?php endforeach ?>
+          </div>
+     </div>
+
+     <a href="../listar">Volver a Página principal</a>
+</main>
+
+<?php require('./templates/footer.phtml'); ?>
