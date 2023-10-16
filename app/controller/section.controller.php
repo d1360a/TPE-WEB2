@@ -10,60 +10,35 @@ class SectionController
   private $view;
   private $modelNews;
 
-
-
+  #crea una instancia de cada clase cuando se instancia el controlador
   public function __construct()
   {
-    $this->model = new Section_model();
-    $this->view = new Section_view();
+    $this->model = new SectionModel();
+    $this->view = new SectionView();
     $this->modelNews = new NewsModel();
   }
+
+  #agrega una seccion nueva en la db
   public function addSection()
   {
-    #validacion de datos del form
     $sectionName = $_POST['section_name'];
-    $this->model->insertSection($sectionName);
+    $this->model->insert_section($sectionName);
     header('Location:' . BASE_URL);
   }
 
-  public function showSection($id_section)
-  {
-    #traemos los datos de las secciones
-    $section = $this->model->getSectionsById($id_section);
-    $this->view->show_section_list($section);
-  }
-
+  #muestra la pagina de una seccion filtrada por id
   public function showSectionPage($id)
   {
-    #traemos datos de una sola seccion
-    $section = $this->model->getSectionsById($id);
-
-    #traemos las noticias
+    $section = $this->model->get_section_by_id($id);
     $news = $this->modelNews->getNewsBySectionId($section->id_seccion);
-
     $this->view->show_section_page($section, $news);
   }
 
-  public function deleteSection($idSection){
-    $this->model->delete_section($idSection);
+  #elimina la seccion elegida por id
+  public function deleteSection($id)
+  {
+    $this->model->delete_section($id);
     header('Location: ' . BASE_URL . '/listar');
   }
 
-  public function showEditForm($id){
-    $sectionData = $this->model->getSectionsById($id);
-
-    $this->view->show_edit_form($sectionData);
-  }
-
-  public function editSection($id){
-    if(isset($_POST['newContent'])){
-      $name = $_POST['newContent'];
-    }else {
-      //agregar un handler de errores
-    }
-
-    $this->model->edit_section($id, $name);
-    header('Location:' . BASE_URL);
-
-  }
 }

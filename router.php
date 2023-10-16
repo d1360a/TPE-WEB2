@@ -39,19 +39,10 @@ switch ($params[0]) {
         $controller = new SectionController();
         $controller->addSection();
         break;
-    case 'seccion':
+    case 'mostrar-seccion':
         $controller = new SectionController();
         $controller->showSectionPage($params[1]);
         break;
-    case 'mostrar-edicion':
-        $controller = new SectionController();
-        $controller->showEditForm($params[1]);
-        break;
-    case 'editar-seccion':
-        $controller = new SectionController();
-        $controller->editSection($params[1]);
-        break;
-
     case 'login':
         $controller = new Auth_controller();
         $controller->showLogin();

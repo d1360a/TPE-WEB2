@@ -1,19 +1,18 @@
+<!-- pagina de una seccion en concreto -->
 <?php require('./templates/header.phtml'); ?>
 
-<main class="cuerpo-seccion-pagina">
+<main>
      <h1> <?= $section->nombre_seccion ?> </h1>
-
-
      <div class="container">
           <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
-
-               <?php foreach ($news as $new): ?>
+               <?php foreach ($news as $new) : ?>
                     <div class="col border p-3">
 
                          <a href="../detalle/<?= $new->id ?>"><b><?= $new->titulo ?></b></a>
 
+                         <!-- muestra el boton borrar si el usuario inicio sesion -->
                          <?php if (isset($_SESSION['USERNAME'])) : ?>
-                              <div class="actions">
+                              <div>
                                    <a href="eliminar/<?= $new->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
                               </div>
                          <?php endif ?>

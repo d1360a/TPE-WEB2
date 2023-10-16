@@ -1,0 +1,14 @@
+<!-- Formulario de edicion de secciones -->
+<form id="form-editar" action="editar-seccion/<?= $section->id_seccion ?>" method="POST">
+     <h2>Editar secciones</h2>
+
+     <div class="mb-3">
+          <label class="form-label" for="newCon">Nuevo nombre de seccion <b><?= $section->nombre_seccion ?></b> </label>
+          <input id="newCon" class="form-control" type="text" value="<?= $section->nombre_seccion ?>" name="newContent" required>
+     </div>
+
+     <!-- campo vacio que aloja el id -->
+     <input type="hidden" value="">
+     <button class="btn-success btn" type="submit">Editar</button>
+
+</form>

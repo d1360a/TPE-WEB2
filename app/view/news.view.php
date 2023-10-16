@@ -1,8 +1,9 @@
 <?php
 
 class NewsView {
-    public function showNews($newss, $sections) {
 
+    #este section se pasa porque en el controlador de vistas esta instanciado el modelo de seccion
+    public function showNews($newss, $sections) {
         require 'templates/news.grid.phtml';
     }
 

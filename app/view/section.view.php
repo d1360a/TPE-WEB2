@@ -1,29 +1,17 @@
 <?php
 
-class Section_view {
-     public function showForm($sections){
-          require './templates/select.form.add.phtml';
-     }
-
-     public function show_view_section($section_data){
-          require('./templates/section.view.phtml');
-     }
-
-     #muestra la lista de secciones en el header
-     public function show_section_list($section_data){
-          
-          require('./templates/lista.secciones.phtml');
-     }
-
-     public function show_section_page($section, $news){
+class SectionView
+{
+     
+     #muestra la pagina de una seccion en concreto
+     public function show_section_page($section, $news)
+     {
           require('./templates/section.page.phtml');
-          
-     }
-     public function show_error_section($error = null){
-          require('./templates/error.phtml');
      }
 
-     public function show_edit_form($sectionData){
+     #muestra el formulario de edicion de secciones
+     public function show_edit_form($sectionData)
+     {
           require('./templates/form.editar.phtml');
      }
 }

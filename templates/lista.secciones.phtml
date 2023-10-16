@@ -1,5 +1,12 @@
-<?php foreach($sections as $section): ?>
+<!-- lista de secciones en el encabezado de la pagina -->
+<?php foreach ($sections as $section) : ?>
      <li class="navbar-brand">
-          <a class="nav-link" href="seccion/<?= $section->id_seccion ?>"><?= $section->nombre_seccion ?></a>
+          <a class="nav-link" href="mostrar-seccion/<?= $section->id_seccion ?>">
+               <?= $section->nombre_seccion ?>
+          </a>
+          <div class="actions">
+               <a href="eliminar-seccion/<?= $section->id_seccion ?>">eliminar</a>
+               <a href="editar-seccion/<?= $section->id_seccion ?>">editar</a>
+          </div>
      </li>
 <?php endforeach; ?>
