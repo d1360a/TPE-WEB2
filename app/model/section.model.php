@@ -35,4 +35,10 @@ class SectionModel{
           $query->execute([$id]);
      }
 
+     #modifica la seccion elegida por id
+     public function update_section($id, $newName){
+          $query = $this->database->prepare('UPDATE seccion SET nombre_seccion = :newName WHERE id_seccion = :id');
+          $query->execute(array(':newName' => $newName, ':id' => $id));
+     }
+
 }

@@ -41,4 +41,13 @@ class SectionController
     header('Location: ' . BASE_URL . '/listar');
   }
 
+  #editar seccion
+  public function editSection($id)
+  {
+    if (isset($_POST['secNewName'])) {
+      $newName = $_POST['secNewName'];
+      $this->model->update_section($id, $newName);
+    }
+    header('Location:' . BASE_URL);
+  }
 }

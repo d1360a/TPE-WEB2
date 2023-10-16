@@ -15,6 +15,7 @@ if (!empty($_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
+    #noticias
     case 'listar':
         $controller = new NewsController();
         $controller->showNews();
@@ -27,13 +28,15 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-    case 'eliminar-seccion':
-        $controller = new SectionController();
-        $controller->deleteSection($params[1]);
-        break;
     case 'detalle':
         $controller = new NewsController();
         $controller->detailNews($params[1]);
+        break;
+
+    #secciones
+    case 'eliminar-seccion':
+        $controller = new SectionController();
+        $controller->deleteSection($params[1]);
         break;
     case 'agregar-seccion':
         $controller = new SectionController();
@@ -43,16 +46,22 @@ switch ($params[0]) {
         $controller = new SectionController();
         $controller->showSectionPage($params[1]);
         break;
+    case 'editar-seccion':
+        $controller = new SectionController();
+        $controller->editSection($params[1]);
+        break;
+
+    #autenticacion
     case 'login':
-        $controller = new Auth_controller();
+        $controller = new AuthController();
         $controller->showLogin();
         break;
     case 'auth':
-        $controller = new Auth_controller();
+        $controller = new AuthController();
         $controller->authenticateUser();
         break;
     case 'logout':
-        $controller = new Auth_controller();
+        $controller = new AuthController();
         $controller->logout();
         break;
     default:

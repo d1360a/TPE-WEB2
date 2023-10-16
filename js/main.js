@@ -10,6 +10,7 @@ let boton = document.querySelector('#btn-cancelar');
 //escuchador
 boton.addEventListener("click", function () {
 
+
      // Obtén una referencia al elemento select
      const selectElement = document.querySelector('select');
 
@@ -28,7 +29,31 @@ boton.addEventListener("click", function () {
 
 
 
+document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("edit-btn")) {
+        var formCont = e.target.closest(".navbar-brand").querySelector(".form-container");
 
+        if (formCont.classList.contains('visible')) {
+            formCont.classList.remove('visible');
+        } else {
+            formCont.classList.add('visible');
+        }
+    }
+
+    if (e.target.classList.contains("close-form-btn") ) {
+        var formCont = e.target.closest(".form-container");
+        formCont.classList.remove('visible');
+    }
+
+    if (e.target.classList.contains("edit-btn") || e.target.closest(".form-container")) {
+        return;
+    }
+
+    var visibleForms = document.querySelectorAll(".form-container.visible");
+    visibleForms.forEach(function (formCont) {
+        formCont.classList.remove('visible');
+    });
+});
 
 
 

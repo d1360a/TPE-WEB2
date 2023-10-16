@@ -4,7 +4,7 @@ require('./app/model/user.model.php');
 require('./app/view/auth.view.php');
 require('./app/helper/auth.helper.php');
 
-class Auth_controller {
+class AuthController {
      private $model;
      private $view;
 
