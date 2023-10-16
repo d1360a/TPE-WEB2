@@ -1,0 +1,48 @@
+<?php if (isset($_SESSION['USERNAME'])) : ?>
+    <div class="form-container">
+        <div class="actions">
+            <button class="btn btn-success" data-toggle="modal" data-target="#editFormModal">Editar</button>
+        </div>
+    </div>
+    
+<!-- Formulario de edición de noticia dentro de un modal -->
+ <div class="modal" id="editFormModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Noticia</h5>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form class="form-edit" id="form-editar" action="editarNoticia/<?= $news->id ?>" method="POST">
+                        <div class="mb-3">
+                            <label for="content" class="form-label">Contenido</label>
+                            <input name="content" type="text" value="<?= $news->contenido ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Fecha</label>
+                            <input name="date" type="date" value="<?= $news->fecha ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="hour" class="form-label">Hora</label>
+                            <input name="hour" type="time" value="<?= $news->hora ?>" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="section_name" class="form-label">Sección</label>
+                            <select name="section_name" id="section_name" class="form-select" required>
+                                <?php foreach ($sections as $section) : ?>
+                                    <option value="<?= $section->id_seccion ?>"><?= $section->nombre_seccion ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <!-- Cambiar el botón Confirmar a un botón de tipo submit -->
+                    <button type="submit" form="form-editar" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

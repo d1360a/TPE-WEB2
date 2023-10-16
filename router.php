@@ -3,10 +3,31 @@ require_once('./app/controller/news.controller.php');
 require_once('./app/controller/auth.controller.php');
 require_once('./app/controller/section.controller.php');
 
-define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
+// tabla de ruteo para acceso publico
+// listarNoticias -> showNews();
+// detalleNoticia/:id -> detailNews($id);
 
-$action = 'listar'; 
-if (!empty( $_GET['action'])) {
+// seccion -> showSectionPage($id);
+
+// login -> showLogin();
+// auth -> authenticateUser();
+
+
+//tabla de ruteo para acceso administrador
+// agregarNoticia -> addNews();
+// eliminarNoticia/:id -> removeNews($id);
+//verEditorNoticia/:id -> editNews($id);
+// editarNoticia/:id -> insertNews($id);
+
+// agregar-seccion -> addSection();
+// seccion -> showSectionPage($id);
+
+// logout-> logout();
+
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+
+$action = 'listarNoticias';
+if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
 
@@ -15,19 +36,23 @@ if (!empty( $_GET['action'])) {
 $params = explode('/', $action);
 
 switch ($params[0]) {
-    case 'listar':
+    case 'listarNoticias':
         $controller = new NewsController();
         $controller->showNews();
         break;
-    case 'agregar':
+    case 'agregarNoticia':
         $controller = new NewsController();
         $controller->addNews();
         break;
-    case 'eliminar':
+    case 'eliminarNoticia':
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-     case 'detalle':
+    case 'editarNoticia':
+        $controller = new NewsController();
+        $controller->editNews($params[1]);
+        break;
+    case 'detalleNoticia':
         $controller = new NewsController();
         $controller->detailNews($params[1]);
         break;
@@ -42,16 +67,16 @@ switch ($params[0]) {
 
     case 'login':
         $controller = new Auth_controller();
-        $controller ->showLogin();
+        $controller->showLogin();
         break;
     case 'auth':
         $controller = new Auth_controller();
-        $controller->authenticateUser();    
+        $controller->authenticateUser();
         break;
     case 'logout':
         $controller = new Auth_controller();
         $controller->logout();
         break;
-    default: 
+    default:
         break;
 }

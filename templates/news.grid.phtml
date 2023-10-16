@@ -1,30 +1,38 @@
-<?php require 'templates/header.phtml' ?>
+    <?php require 'templates/header.phtml' ?>
 
 
-<?php if(isset($_SESSION['USER_ID'])): ?>
-    <?php require 'templates/form_alta.phtml' ?>
-<?php endif?>
+    <?php if(isset($_SESSION['USER_ID'])): ?>
+        <div class="container-fluid">
+            <p class="h3"> Agregar noticia </p>
+            <?php require 'templates/form.add.news.phtml' ?>
+        </div>
+        
+        <div class="container-fluid">
+            <p class="h3"> Agregar sección </p>
+            <?php require 'templates/form.add.section.phtml' ?>
+        </div>
+    <?php endif?>
 
 
 
 
-<div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
-        <?php foreach($newss as $news): ?>
-            <div class="col border p-3">
-                <a href="detalle/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
-                <?php foreach ($sections as $section) : ?>
-                    <option value="<?= $section->id_seccion ?>"> <?= $section->nombre_seccion ?> </option>
-                 <?php endforeach; ?>
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
+            <?php foreach($newss as $news): ?>
+                <div class="col border p-3">
+                    <a href="detalleNoticia/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
+                    <p>me falta poner la seccion</p>
 
-                <?php if(isset($_SESSION['USERNAME'])): ?>
-                    <div class="actions">
-                        <a href="eliminar/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
-                    </div>
-                <?php endif ?>
-            </div>
-        <?php endforeach ?>
+                    <?php if(isset($_SESSION['USERNAME'])): ?>
+                        <div class="actions">
+                            <a href="editarNoticia/<?= $news->id ?>" type="button" class="btn btn-outline-secondary">Editar</a>
+                            <a href="eliminarNoticia/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
+                        </div>
+                    <?php endif ?>
+                </div>
+            <?php endforeach ?>
+        </div>
     </div>
-</div>
+</main>
 
 <?php require 'templates/footer.phtml' ?>

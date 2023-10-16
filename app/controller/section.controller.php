@@ -7,6 +7,7 @@ require_once('app/model/section.model.php');
    class SectionController {
       private $model;
       private $view;
+      private  $modelNews;
   
       public function __construct() {  
           $this->model = new SectionModel();
@@ -23,8 +24,7 @@ require_once('app/model/section.model.php');
     $this->model->insertSection();
   }
 
-  public function showSection($id_section)
-  {
+  public function showSection($id_section){
     #traemos los datos de las secciones
     $section = $this->model->getSectionsById($id_section);
     $this->view->show_section_list($section);

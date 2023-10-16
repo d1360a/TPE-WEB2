@@ -1,0 +1,6 @@
+<label for="section_name" class="form-label">Sección</label>
+<select name="section_name" id="section_name" class="form-select" required>
+    <?php foreach ($sections as $section) : ?>
+        <option value="<?= $section->id_seccion ?>"><?= $section->nombre_seccion ?></option>
+    <?php endforeach; ?>
+</select>

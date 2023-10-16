@@ -94,8 +94,7 @@ INSERT INTO `seccion` (`id_seccion`, `nombre_seccion`) VALUES
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
-  `rol` tinyint(4) NOT NULL
+  `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -118,18 +117,41 @@ ALTER TABLE `seccion`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+INSERT INTO `usuario` (`id_usuario`, `nombre`, `password`) VALUES
+(1, 'webadmin', 'admin');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id_usuario`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+COMMIT;
 
 --
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- Restricciones para tablas volcadas

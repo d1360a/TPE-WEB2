@@ -20,21 +20,27 @@ class NewsModel {
     function insertNews($title, $content, $date, $hour, $id_section) {
         $query = $this->db->prepare('INSERT INTO noticias ( titulo, contenido, fecha, hora, id_seccion) VALUES(?,?,?,?,?)');
         $query->execute([$title, $content, $date, $hour, $id_section]);
-
         return $this->db->lastInsertId();
+        
     }
 
-    
+    function updateNews($id, $title, $content, $date, $hour, $sectionID){
+        $query = $this->db->prepare('UPDATE noticias SET titulo = ?, contenido = ?, fecha = ?, hora = ?, id_seccion = ? WHERE id = ?');
+        $query->execute([$title, $content, $date, $hour, $sectionID, $id]);
+    }
+        
+
+
     function deleteNews($id) {
         $query = $this->db->prepare('DELETE FROM noticias WHERE id = ?');
         $query->execute([$id]);
     }
 
-    
-    function getNewsById($id) {
-        $query = $this->db->prepare('SELECT * FROM noticias WHERE id = :id');
-        $query->execute([':id' => $id]);
 
+    function getNewsById($id) {
+        $query = $this->db->prepare('SELECT noticias.*, seccion.nombre_seccion AS nombre_seccion FROM noticias JOIN seccion ON noticias.id_seccion = seccion.id_seccion WHERE noticias.id = ?');
+        $query->execute([$id]);
+    
         return $query->fetch(PDO::FETCH_OBJ);
     }
 

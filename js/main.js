@@ -1,4 +1,6 @@
 "use strict"
+
+//borra todos los campos del formulario
 //nodo del formulario 
 let form = document.querySelector('#news-form');
 
@@ -6,21 +8,23 @@ let form = document.querySelector('#news-form');
 let boton = document.querySelector('#btn-cancelar');
 
 //escuchador
-boton.addEventListener("click", function(){
+boton.addEventListener("click", function () {
+
 
      // Obtén una referencia al elemento select
-const selectElement = document.querySelector('select');
+     const selectElement = document.querySelector('select');
 
-// Establece el valor del select en una opción no válida, como una opción vacía
-selectElement.value = '';
-     
+     // Establece el valor del select en una opción no válida, como una opción vacía
+     selectElement.value = '';
+
      let inputs = form.querySelectorAll('input');
+     let textarea = document.querySelector('#textarea');
 
-     inputs.forEach(function(input){
+     textarea.value = '';
+     inputs.forEach(function (input) {
           input.value = '';
      })
 });
 
 
-
-
+;
