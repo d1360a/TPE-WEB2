@@ -1,4 +1,6 @@
 "use strict"
+
+//borra todos los campos del formulario
 //nodo del formulario 
 let form = document.querySelector('#news-form');
 
@@ -22,6 +24,19 @@ boton.addEventListener("click", function () {
           input.value = '';
      })
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

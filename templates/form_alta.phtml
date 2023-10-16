@@ -40,18 +40,20 @@
      <button type="submit" class="btn btn-success">Agregar</button>
 </form>
 
+
+<!-- lista de secciones -->
 <div class="sections-card">
-          <ul>
-               <?php foreach($sections as $section) : ?>
-                    <li>
-                         <div>
-                             <p><?= $section->nombre_seccion ?></p>
-                         </div>
-                         <div class="actions">
-                              <a class="btn btn-danger" href="eliminar-seccion/<?= $section->id_seccion ?>">Eliminar</a>
-                              <a class="btn btn-success" href="editar-seccion/<?= $section->id_seccion ?>">Editar</a>
-                         </div>
-                    </li>
-               <?php endforeach; ?>
-          </ul>
+     <ul>
+          <?php foreach ($sections as $section) : ?>
+               <li id="list-item">
+                    <div>
+                         <p><?= $section->nombre_seccion ?></p>
+                    </div>
+                    <div class="actions">
+                         <a class="btn btn-danger" href="eliminar-seccion/<?= $section->id_seccion ?>">Eliminar</a>
+                         <a class="btn btn-success" href="mostrar-edicion/<?= $section->id_seccion ?>">Editar</a>
+                    </div>
+               </li>
+          <?php endforeach; ?>
+     </ul>
 </div>

@@ -1,13 +1,14 @@
 <?php require 'templates/header.phtml' ?>
 
 
+<!-- formularios para crear noticias y secciones -->
 <?php if(isset($_SESSION['USER_ID'])): ?>
     <?php require 'templates/form_alta.phtml' ?>
 <?php endif?>
 
 
 
-
+<!-- Lista de noticias del home -->
 <div class="container">
     <div class="row row-cols-1 row-cols-md-2 g-2 p-1">
         <?php foreach($newss as $news): ?>

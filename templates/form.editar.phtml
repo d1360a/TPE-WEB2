@@ -1,0 +1,12 @@
+<?php require 'templates/header.phtml' ?>
+
+<form id="form-editar" action="editar-seccion/<?= $sectionData->id_seccion?>" method="POST">
+
+     <label for="">Nuevo nombre de seccion <b><?= $sectionData->nombre_seccion ?></b> </label>
+     <input class="form-control" type="text" value="<?= $sectionData->nombre_seccion?>" name="newContent" required>
+
+     <button class="btn-success btn" type="submit">Editar</button>
+
+</form>
+
+<?php require 'templates/footer.phtml' ?>

@@ -23,4 +23,7 @@ class Section_view {
           require('./templates/error.phtml');
      }
 
+     public function show_edit_form($sectionData){
+          require('./templates/form.editar.phtml');
+     }
 }

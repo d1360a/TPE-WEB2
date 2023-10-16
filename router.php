@@ -27,7 +27,6 @@ switch ($params[0]) {
         $controller = new NewsController();
         $controller->removeNews($params[1]);
         break;
-
     case 'eliminar-seccion':
         $controller = new SectionController();
         $controller->deleteSection($params[1]);
@@ -43,6 +42,14 @@ switch ($params[0]) {
     case 'seccion':
         $controller = new SectionController();
         $controller->showSectionPage($params[1]);
+        break;
+    case 'mostrar-edicion':
+        $controller = new SectionController();
+        $controller->showEditForm($params[1]);
+        break;
+    case 'editar-seccion':
+        $controller = new SectionController();
+        $controller->editSection($params[1]);
         break;
 
     case 'login':

@@ -45,8 +45,25 @@ class SectionController
   }
 
   public function deleteSection($idSection){
-
     $this->model->delete_section($idSection);
     header('Location: ' . BASE_URL . '/listar');
+  }
+
+  public function showEditForm($id){
+    $sectionData = $this->model->getSectionsById($id);
+
+    $this->view->show_edit_form($sectionData);
+  }
+
+  public function editSection($id){
+    if(isset($_POST['newContent'])){
+      $name = $_POST['newContent'];
+    }else {
+      //agregar un handler de errores
+    }
+
+    $this->model->edit_section($id, $name);
+    header('Location:' . BASE_URL);
+
   }
 }
