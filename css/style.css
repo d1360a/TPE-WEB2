@@ -16,12 +16,12 @@ form{
 }
 
 .visible {
-    display: flex;
+    display: block;
     position:absolute;
     background-color: #212529;
+    padding: 5px;
+    left: 5px;
 }
-
-
 img {
     height: 50px;
     width: 50px;
@@ -34,4 +34,5 @@ header li {
 header .navbar {
     padding-left: 15px;
     padding-right: 15px;
+    padding-bottom: 50px;
 }

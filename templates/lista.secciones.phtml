@@ -7,10 +7,15 @@
           <?php if(isset($_SESSION['USERNAME'])): ?>
           <div  class="form-container">
                <!-- Formulario de edicion de secciones -->
-               <form id="form-editar" action="editar-seccion/<?= $section->id_seccion ?>" method="POST">
-                    <label class="form-label" for="sec-name">Editar seccion</label>
-                    <input class="form-control" id="sec-name" name="secNewName" type="text" value="<?= $section->nombre_seccion?>" required>
-                    <button id="btn-sub" class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
+               <form class="form-edit" id="form-editar" action="editar-seccion/<?= $section->id_seccion ?>" method="POST">
+                    <div>
+                         <label class="form-label" for="sec-name">Editar seccion</label>
+                         <input class="form-control" id="sec-name" name="secNewName" type="text" value="<?= $section->nombre_seccion?>" required>
+                    </div>
+                    <div>
+
+                         <button id="btn-sub" class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
+                    </div>
                </form>
           </div>
 
