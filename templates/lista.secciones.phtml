@@ -10,7 +10,7 @@
                <form class="form-edit" id="form-editar" action="editar-seccion/<?= $section->id_seccion ?>" method="POST">
                     <div>
                          <label class="form-label" for="sec-name">Editar seccion</label>
-                         <input class="form-control" id="sec-name" name="secNewName" type="text" value="<?= $section->nombre_seccion?>" required>
+                         <input class="form-control" id="sec-name" name="secNewName" type="text" value="<?= $section->nombre_seccion?>" autocomplete="off" autocapitalize="on" required>
                     </div>
                     <div>
 

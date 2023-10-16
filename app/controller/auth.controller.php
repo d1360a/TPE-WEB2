@@ -35,7 +35,7 @@ class AuthController {
           $user = $this -> model -> get_user_by_username($username);
           
           #autenticacion usuario
-          if($user && $password && $user -> password){
+          if($user && password_verify($password, $user -> password)){
                AuthHelper::login_user($user);
                header('Location: ' . BASE_URL);
           } else {
