@@ -10,8 +10,8 @@ class AuthController {
 
      public function __construct()
      {
-          $this -> model = new User_model;
-          $this -> view = new Auth_view;
+          $this -> model = new UserModel;
+          $this -> view = new AuthView;
      }
 
      #login
@@ -26,7 +26,7 @@ class AuthController {
           $password = $_POST['password'];
           
           #validamos los datos
-          if (!isset($username) || !isset($password)){
+          if (empty($username) || empty($password)){
                $this -> view -> show_view_login("Faltan completar datos");
                return;
           }

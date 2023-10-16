@@ -6,6 +6,7 @@ require_once('app/model/section.model.php');
 
 class SectionController
 {
+  private $viewNews;
   private $model;
   private $view;
   private $modelNews;
@@ -16,14 +17,19 @@ class SectionController
     $this->model = new SectionModel();
     $this->view = new SectionView();
     $this->modelNews = new NewsModel();
+    $this->viewNews = new NewsView();
   }
 
   #agrega una seccion nueva en la db
   public function addSection()
   {
-    $sectionName = $_POST['section_name'];
-    $this->model->insert_section($sectionName);
-    header('Location:' . BASE_URL);
+    if(empty($_POST['section_name'])){
+      $this->viewNews->showError('El campo esta vacio');
+    }else{
+      $sectionName = $_POST['section_name'];
+      $this->model->insert_section($sectionName);
+      header('Location:' . BASE_URL);
+    }
   }
 
   #muestra la pagina de una seccion filtrada por id
@@ -44,10 +50,9 @@ class SectionController
   #editar seccion
   public function editSection($id)
   {
-    if (isset($_POST['secNewName'])) {
       $newName = $_POST['secNewName'];
       $this->model->update_section($id, $newName);
-    }
-    header('Location:' . BASE_URL);
+      $this->viewNews->showError('Error el campo esta vacio');
+      header('Location:' . BASE_URL);
   }
 }

@@ -4,7 +4,7 @@ class SectionView
 {
      
      #muestra la pagina de una seccion en concreto
-     public function show_section_page($section, $news)
+     public function show_section_page($section, $news, $error = null)
      {
           require('./templates/section.page.phtml');
      }
@@ -13,5 +13,10 @@ class SectionView
      public function show_edit_form($sectionData)
      {
           require('./templates/form.editar.phtml');
+     }
+
+     #muestra un mensaje de error 
+     public function show_error_section($error){
+          require './templates/error.phtml';
      }
 }

@@ -7,7 +7,7 @@ class NewsView {
         require 'templates/news.grid.phtml';
     }
 
-    public function showError($error) {
+    public function showError($error = null) {
         require 'templates/error.phtml';
     }
 }
