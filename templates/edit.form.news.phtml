@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php if (isset($_SESSION['USERNAME'])) : ?>
 
     <h5 class="edit-title">Editar Noticia</h5>
@@ -22,6 +23,34 @@
             <?php require 'templates/select.form.edit.phtml' ?>
         </div>
         <button type="submit" class="btn btn-primary">Guardar</button>
+=======
+    <!-- Formulario de edición de noticia dentro de un modal -->
+    <div class="mb-3">
+    <form class="" action="<?= BASE_URL ?>/editarNoticia/<?= $news->id ?>" method="POST">
+
+        <div class="mb-3">
+            <label for="title" class="form-label">Título</label>
+            <input name="title" type="text" value="<?= $news->titulo ?>" class="form-control" autocomplete="off" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Contenido</label>
+            <input name="content" type="text" value="<?= $news->contenido ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Fecha</label>
+            <input name="date" type="date" value="<?= $news->fecha ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="hour" class="form-label">Hora</label>
+            <input name="hour" type="time" value="<?= $news->hora ?>" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="sections" class="form-label">Sección</label>
+            <select name="id_section" id="sections" class="form-select" aria-label="Default select example" required>
+                <?php require 'templates/select.form.edit.phtml' ?>
+            </select>
+        </div>
+        <button type="submit">Guardar</button>
+>>>>>>> 5b45de46b4579d85a716c23d2521b74fce33c155
     </form>
     </div>
-<?php endif; ?>

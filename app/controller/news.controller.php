@@ -24,6 +24,7 @@ class NewsController{
     }
 
     public function addNews(){
+
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
@@ -44,47 +45,23 @@ class NewsController{
     }
 
 
-    public function editNews($id) {
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $date = $_POST['date'];
-        $hour = $_POST['hour'];
-        $idSection = $_POST['section_id'];
 
-        if (empty($title) || empty($content) || empty($date) || empty($hour) || empty($idSection)){
-            $this->view->showError("Faltan completar campos");
-            return;
-        }
-        $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
-            
+    public function editNews($id){
         
-        header('Location: ' . BASE_URL);
-        
-       
-    }
-
-
-    /* public function editNews($id){
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        #validacion de datos
 
             $title = $_POST['title'];
             $content = $_POST['content'];
             $date = $_POST['date'];
             $hour = $_POST['hour'];
-            $idSection = $_POST['section_id'];
+            $idSection = $_POST['id_section'];
 
-            $success=$this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
-            
-            if ($success) {
-                header('Location: /detalleNoticia');
-            } else {
-               $this->view->showError('No se pudo actualizar la noticia');
-            }
-            
-        }
-    } */
+            $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
+        
+            header('Location: ' . BASE_URL . "detalleNoticia/$id");
+    }
 
+    //if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['date']) && !empty($_POST['hour']) && !empty($_POST['id_section'])){
 
     function removeNews($id){
         $this->modelNews->deleteNews($id);

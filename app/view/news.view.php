@@ -7,10 +7,10 @@ class NewsView {
         require 'templates/news.grid.phtml';
     }
 
-    function showEditNews($news, $sections){
-        require 'templates/news.edit.phtml';
-    }
-    
+    // function showEditNews($news, $sections){
+    //     require 'templates/news.edit.phtml';
+    // }
+
     public function newsDetail($news, $sections) {
         require 'templates/news.detail.phtml';
     }

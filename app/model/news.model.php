@@ -25,7 +25,6 @@ class NewsModel extends Model{
     function updateNews($id, $title, $content, $date, $hour, $sectionID){
         $query = $this->db->prepare('UPDATE noticias SET titulo = ?, contenido = ?, fecha = ?, hora = ?, id_seccion = ? WHERE id = ?');
         $query->execute([$title, $content, $date, $hour, $sectionID, $id]);
-        return $query;  
     }
         
 
