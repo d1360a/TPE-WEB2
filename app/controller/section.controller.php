@@ -60,8 +60,4 @@ class SectionController
     header('Location:' . BASE_URL);
   }
 
-  public function sectionList(){
-    $sections = $this->modelSection->getSections();
-    $this->view->show_sections_list($sections);
-  }
 }

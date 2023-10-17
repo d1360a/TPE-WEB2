@@ -20,7 +20,4 @@ class SectionView
           require './templates/error.phtml';
      }
 
-     public function show_sections_list($sections){
-          require './templates/sections.list.phtml';
-     }
 }

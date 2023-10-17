@@ -1,8 +1,0 @@
-<label for="sections" class="form-label">Sección</label>
-<select name="id_section" id="sections" class="form-select" aria-label="Default select example" required>
-    <?php foreach ($sections as $section) : ?>
-        <option value="<?= $section->id_seccion ?>">
-            <?= $section->nombre_seccion ?>
-        </option>
-    <?php endforeach; ?>
-</select>
