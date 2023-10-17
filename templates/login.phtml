@@ -17,9 +17,9 @@
 
      </div>
 
-     <?php if($error): ?>
+     <?php if ($error) : ?>
           <div class="alert alert-danger" role="alert">
-               <?=$error?>
+               <?= $error ?>
           </div>
      <?php endif; ?>
 
@@ -29,4 +29,7 @@
 
 </form>
 
+<div class="mb-3">
+     <a href="listar" class="btn btn-primary">Volver a inicio</a>
+</div>
 <?php require('./templates/footer.phtml'); ?>

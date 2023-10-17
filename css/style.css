@@ -3,18 +3,36 @@
 }
 
 form{
-    margin-top: 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
 }
 
-.form-add-sec {
+.form-container {
+    display: none;
+}
+
+.visible {
+    display: block;
+    position:absolute;
+    background-color: #212529;
+    padding: 5px;
+    left: 5px;
+}
+img {
+    height: 50px;
+    width: 50px;
+}
+
+header li {
     display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
+    justify-content: space-between;
+}
+header .navbar {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 50px;
 }
 
 .navbar-nav .nav-link {

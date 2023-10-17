@@ -1,21 +1,22 @@
 <?php
 
-class SectionView {
-     public function showForm($sections){
-          require './templates/select.form.add.phtml';
-     }
-
-     public function show_view_section($section_data){
-          require('./templates/section.view.phtml');
-     }
-
-     public function show_section_list($section_data){
-          require('./templates/lista.secciones.phtml');
-     }
-
-     public function show_section_page($section, $news){
+class SectionView
+{
+     
+     #muestra la pagina de una seccion en concreto
+     public function show_section_page($section, $news, $error = null)
+     {
           require('./templates/section.page.phtml');
-          
      }
 
+     #muestra el formulario de edicion de secciones
+     public function show_edit_form($sectionData)
+     {
+          require('./templates/form.editar.phtml');
+     }
+
+     #muestra un mensaje de error 
+     public function show_error_section($error){
+          require './templates/error.phtml';
+     }
 }

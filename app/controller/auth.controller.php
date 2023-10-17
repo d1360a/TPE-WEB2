@@ -4,19 +4,20 @@ require('./app/model/user.model.php');
 require('./app/view/auth.view.php');
 require('./app/helper/auth.helper.php');
 
-class Auth_controller {
+class AuthController {
      private $model;
      private $view;
 
      public function __construct()
      {
-          $this -> model = new User_model;
-          $this -> view = new Auth_view;
+          $this -> model = new UserModel;
+          $this -> view = new AuthView;
      }
 
      #login
      public function showLogin(){
           $this -> view -> show_view_login();
+          
      }
 
      public function authenticateUser(){
@@ -25,7 +26,7 @@ class Auth_controller {
           $password = $_POST['password'];
           
           #validamos los datos
-          if (!isset($username) || !isset($password)){
+          if (empty($username) || empty($password)){
                $this -> view -> show_view_login("Faltan completar datos");
                return;
           }
@@ -34,7 +35,7 @@ class Auth_controller {
           $user = $this -> model -> get_user_by_username($username);
           
           #autenticacion usuario
-          if($user && $password && $user -> password){
+          if($user && password_verify($password, $user -> password)){
                AuthHelper::login_user($user);
                header('Location: ' . BASE_URL);
           } else {
