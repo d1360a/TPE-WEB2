@@ -24,7 +24,7 @@ class AuthHelper {
 
      #verificar si el usuario esta logueado
      public static function verify_user(){
-          if(!isset($_SESSION['USER_ID'])){
+          if(empty($_SESSION['USER_ID'])){
                header('Location: ' . BASE_URL);
                die();
           }
