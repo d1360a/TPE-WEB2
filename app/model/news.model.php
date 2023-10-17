@@ -10,8 +10,6 @@ class NewsModel {
     function getNews() {
         $query = $this->db->prepare('SELECT * FROM noticias');
         $query->execute();
-
-
         $newss = $query->fetchAll(PDO::FETCH_OBJ);
 
         return $newss;
@@ -27,6 +25,7 @@ class NewsModel {
     function updateNews($id, $title, $content, $date, $hour, $sectionID){
         $query = $this->db->prepare('UPDATE noticias SET titulo = ?, contenido = ?, fecha = ?, hora = ?, id_seccion = ? WHERE id = ?');
         $query->execute([$title, $content, $date, $hour, $sectionID, $id]);
+        return $query;
     }
         
 
@@ -38,9 +37,8 @@ class NewsModel {
 
 
     function getNewsById($id) {
-        $query = $this->db->prepare('SELECT noticias.*, seccion.nombre_seccion AS nombre_seccion FROM noticias JOIN seccion ON noticias.id_seccion = seccion.id_seccion WHERE noticias.id = ?');
-        $query->execute([$id]);
-    
+        $query = $this->db->prepare('SELECT * FROM noticias WHERE id = ?');
+        $query->execute([$id]);    
         return $query->fetch(PDO::FETCH_OBJ);
     }
 

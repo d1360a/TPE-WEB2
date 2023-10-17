@@ -21,14 +21,18 @@ class SectionController
   }
 
   #agrega una seccion nueva en la db
-  public function addSection()
-  {
-    if(empty($_POST['section_name'])){
+  public function addSection(){
+    $sectionName = $_POST['section-name'];
+    
+    if (empty($sectionName)) {
       $this->viewNews->showError('El campo esta vacio');
-    }else{
-      $sectionName = $_POST['section_name'];
-      $this->model->insert_section($sectionName);
-      header('Location:' . BASE_URL);
+      return;
+    } 
+    $id = $this->model->insert_section($sectionName);
+    if ($id) {
+        header('Location: ' . BASE_URL);
+    } else {
+        $this->viewNews->showError("Error al insertar la noticia");
     }
   }
 
@@ -50,9 +54,9 @@ class SectionController
   #editar seccion
   public function editSection($id)
   {
-      $newName = $_POST['secNewName'];
-      $this->model->update_section($id, $newName);
-      $this->viewNews->showError('Error el campo esta vacio');
-      header('Location:' . BASE_URL);
+    $newName = $_POST['secNewName'];
+    $this->model->update_section($id, $newName);
+    $this->viewNews->showError('Error el campo esta vacio');
+    header('Location:' . BASE_URL);
   }
 }
