@@ -19,4 +19,8 @@ class SectionView
      public function show_error_section($error){
           require './templates/error.phtml';
      }
+
+     public function show_sections_list($sections){
+          require './templates/sections.list.phtml';
+     }
 }

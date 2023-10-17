@@ -3,15 +3,15 @@
 class NewsView {
 
     #este section se pasa porque en el controlador de vistas esta instanciado el modelo de seccion
-    public function showNews($newss, $sections) {
+    public function showNews($newss) {
         require 'templates/news.grid.phtml';
     }
 
-    function showEditNews($news, $sections){
+    function showEditNews($news){
         require 'templates/news.edit.phtml';
     }
 
-    public function newsDetail($news, $sections) {
+    public function newsDetail($news) {
         require 'templates/news.detail.phtml';
     }
 
