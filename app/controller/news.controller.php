@@ -24,6 +24,7 @@ class NewsController{
     }
 
     public function addNews(){
+
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
@@ -46,22 +47,21 @@ class NewsController{
 
 
     public function editNews($id){
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        
+        #validacion de datos
 
             $title = $_POST['title'];
             $content = $_POST['content'];
             $date = $_POST['date'];
             $hour = $_POST['hour'];
-            $idSection = $_POST['section_id'];
+            $idSection = $_POST['id_section'];
 
-            $success=$this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
-            
-           
-            
-        }
+            $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
+        
+            header('Location: ' . BASE_URL . "detalleNoticia/$id");
     }
 
+    //if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['date']) && !empty($_POST['hour']) && !empty($_POST['id_section'])){
 
     function removeNews($id){
         $this->modelNews->deleteNews($id);
