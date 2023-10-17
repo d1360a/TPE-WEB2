@@ -1,7 +1,6 @@
 <?php
 
-#Se borró require config.php, ya que config tiene constantes definidas y son globales, no es necesario incluirlo
-
+require_once './config.php';
 class Model {
   protected $db;
   private $hash;

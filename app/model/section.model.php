@@ -1,5 +1,7 @@
 <?php
 
+require_once 'model.php';
+
 class SectionModel extends Model{
      #Se borró la private db porque esta definida en model
      #tambien se elimino la funcion construct

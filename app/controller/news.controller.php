@@ -6,20 +6,21 @@ require_once('app/model/section.model.php');
 
 class NewsController{
     
-    private $model;
+    private $modelNews;
     private $view;
     private $modelSection;
 
     public function __construct(){
-        $this->model = new NewsModel();
+        $this->modelNews = new NewsModel();
         $this->view = new NewsView();
         $this->modelSection = new SectionModel();
     }
 
     public function showNews(){
         $sections = $this->modelSection->getSections();
-        $newss = $this->model->getNews();
+        $newss = $this->modelNews->getNews();
         $this->view->showNews($newss, $sections);
+        var_dump(MYSQL_HOST);
     }
 
     public function addNews(){
@@ -34,7 +35,7 @@ class NewsController{
             return;
         }
 
-        $id = $this->model->insertNews($title, $content, $date, $hour, $id_section);
+        $id = $this->modelNews->insertNews($title, $content, $date, $hour, $id_section);
         if ($id) {
             header('Location: ' . BASE_URL);
         } else {
@@ -54,7 +55,7 @@ class NewsController{
             $hour = $_POST['hour'];
             $idSection = $_POST['section_id'];
 
-            $success=$this->model->updateNews($id, $title, $content, $date, $hour, $idSection);
+            $success=$this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
             
            
             
@@ -63,13 +64,13 @@ class NewsController{
 
 
     function removeNews($id){
-        $this->model->deleteNews($id);
+        $this->modelNews->deleteNews($id);
         header('Location: ' . BASE_URL);
     }
 
 
     function detailNews($id){
-        $news = $this->model->getNewsById($id);
+        $news = $this->modelNews->getNewsById($id);
         $sections = $this-> modelSection->getSections();
         
         $this->view->newsDetail($news, $sections);

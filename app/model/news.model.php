@@ -1,6 +1,6 @@
 <?php
 #incluye el modelo
-require './app/model/model.php';
+require_once 'model.php';
 
 #Se extiende la clase model que hereda propiedades y metodos de Model
 class NewsModel extends Model{

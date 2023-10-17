@@ -1,6 +1,6 @@
 <?php
 
-require './app/model/model.php';
+require_once 'model.php';
 
 class UserModel extends Model{
      #Se borró private database y se sustituyo database por db
