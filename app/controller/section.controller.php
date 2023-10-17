@@ -48,16 +48,27 @@ class SectionController
   public function deleteSection($id)
   {
     $this->modelSection->delete_section($id);
-    header('Location: ' . BASE_URL . '/listar');
+    header('Location: ' . BASE_URL );
   }
 
-  #editar seccion
-  public function editSection($id)
-  {
-    $newName = $_POST['secNewName'];
-    $this->modelSection->update_section($id, $newName);
-    $this->viewNews->showError('Error el campo esta vacio');
-    header('Location:' . BASE_URL);
+  public function showEditionPage($id){
+    $section = $this->modelSection->getSectionsById($id);
+      $this->view->show_edition_page($section);
   }
+
+  public function uploadSectionChanges($id){
+    #toma de datos
+    if (!empty($_POST['new-name'])){
+      $newName = $_POST['new-name'];
+      $this->modelSection->update_section($id, $newName);
+      header('Location: '. BASE_URL);
+    }else {
+      $this->view->show_error_section("No completo los campos");
+      return;
+    }
+    
+  }
+
+
 
 }
