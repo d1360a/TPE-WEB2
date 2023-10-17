@@ -8,7 +8,7 @@ class SectionModel{
      }
 
      #selecciona todas las secciones de la tabla seccion
-     public function get_sections(){
+     public function getSections(){
           $query = $this->database->prepare('SELECT * FROM seccion');
           $query ->execute();
 
@@ -25,7 +25,9 @@ class SectionModel{
      public function insert_section($sectionNAME){
           $query = $this->database->prepare('INSERT INTO seccion(nombre_seccion) VALUES(?)');
           $query->execute([$sectionNAME]);
+          return $this->database->lastInsertId();
      }
+
 
      #elimina una seccion filtrada por id
      public function delete_section($id){

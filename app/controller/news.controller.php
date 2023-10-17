@@ -1,9 +1,8 @@
 <?php
 
 require_once('app/view/news.view.php');
-require_once('app/view/news.detail.php');
 require_once('app/model/news.model.php');
-
+require_once('app/model/section.model.php');
 
 class NewsController{
     
@@ -46,11 +45,6 @@ class NewsController{
 
 
     public function editNews($id){
-        $news = $this->model->getNewsById($id);
-        $sections = $this->modelSection->getSections();
-        $editNews = new NewsView();
-        $editNews->showEditNews($news, $sections);
-        var_dump($news);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -61,13 +55,9 @@ class NewsController{
             $idSection = $_POST['section_id'];
 
             $success=$this->model->updateNews($id, $title, $content, $date, $hour, $idSection);
-
-            if ($success) {
-                header('Location: ' . BASE_URL);
-                exit;
-            } else {
-                $this->view->showError("Error al editar la noticia");
-            };
+            
+           
+            
         }
     }
 
@@ -80,7 +70,8 @@ class NewsController{
 
     function detailNews($id){
         $news = $this->model->getNewsById($id);
-        $detailView = new NewsView();
-        $detailView->newsDetail($news);
+        $sections = $this-> modelSection->getSections();
+        
+        $this->view->newsDetail($news, $sections);
     }
 }
