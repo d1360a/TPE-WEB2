@@ -1,12 +1,12 @@
 <?php
+#incluye el modelo
+require './app/model/model.php';
 
-class NewsModel {
-    private $db;
-
-    function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_diario;charset=utf8', 'root', '');
-    }
-
+#Se extiende la clase model que hereda propiedades y metodos de Model
+class NewsModel extends Model{
+    #se borró private db porque ya esta definida en la clase Model
+    #se borró la funcion construct
+    
     function getNews() {
         $query = $this->db->prepare('SELECT * FROM noticias');
         $query->execute();

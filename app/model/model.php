@@ -1,22 +1,25 @@
 <?php
 
-  require './config.php';
-    class Model {
-        protected $db;
-        private $hash;
-        function __construct() {
-            $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
-            $this->db = new PDO('mysql:host='. MYSQL_HOST .';dbname='. MYSQL_DB .';charset=utf8', MYSQL_USER, MYSQL_PASS);
-            $this->deploy();
-        }
+#Se borró require config.php, ya que config tiene constantes definidas y son globales, no es necesario incluirlo
 
-        function deploy() {
-            // Chequear si hay tablas
-            $query = $this->db->query('SHOW TABLES');
-            $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
-            if(count($tables)==0) {
-                // Si no hay crearlas
-                $sql =<<<END
+class Model {
+  protected $db;
+  private $hash;
+  function __construct()
+  {
+    $this->db = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB . ';charset=utf8', MYSQL_USER, MYSQL_PASS);
+    $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
+    $this->deploy();
+  }
+
+  public function deploy()
+  {
+    // Chequear si hay tablas
+    $query = $this->db->query('SHOW TABLES');
+    $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
+    if (count($tables) == 0) {
+      // Si no hay crearlas
+      $sql = <<<END
                 -- --------------------------------------------------------
 
                 --
@@ -159,8 +162,7 @@
                   ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`);
                 COMMIT;
                 END;
-                $this->db->query($sql);
-            }
-            
-        }
+      $this->db->query($sql);
     }
+  }
+}
