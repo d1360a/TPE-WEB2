@@ -1,9 +1,11 @@
 <?php
+  
     class Model {
         protected $db;
-
+        private $hash;
         function __construct() {
-            $this->db = new PDO('mysql:host='. MYSQL_HOST .';dbname='. MYSQL_DB .';charset=utf8', MYSQL_USER, MYSQL_PASS);
+            $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
+            $this->db = new PDO('mysql:host='. HOST .';dbname='. DATA_BASE_NAME .';charset=utf8', USER, PASSWORD);
             $this->deploy();
         }
 
@@ -98,7 +100,7 @@
                 --
                 
                 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
-                (2, 'webadmin', 'webadmin@correo.com', '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru', 1);
+                (2, 'webadmin', 'webadmin@correo.com', '{$this->hash}', 1);
                 
                 --
                 -- Índices para tablas volcadas
