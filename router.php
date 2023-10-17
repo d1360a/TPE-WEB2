@@ -16,7 +16,7 @@ require_once('./app/controller/section.controller.php');
 //tabla de ruteo para acceso administrador
 // agregarNoticia -> addNews();
 // eliminarNoticia/:id -> removeNews($id);
-//verEditorNoticia/:id -> editNews($id);
+//editarNoticia/:id -> editNews($id);
 // editarNoticia/:id -> insertNews($id);
 
 // agregar-seccion -> addSection();

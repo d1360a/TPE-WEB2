@@ -44,8 +44,27 @@ class NewsController{
     }
 
 
+    public function editNews($id) {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = $_POST['date'];
+        $hour = $_POST['hour'];
+        $idSection = $_POST['section_id'];
 
-    public function editNews($id){
+        if (empty($title) || empty($content) || empty($date) || empty($hour) || empty($idSection)){
+            $this->view->showError("Faltan completar campos");
+            return;
+        }
+        $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
+            
+        
+        header('Location: ' . BASE_URL);
+        
+       
+    }
+
+
+    /* public function editNews($id){
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -57,10 +76,14 @@ class NewsController{
 
             $success=$this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
             
-           
+            if ($success) {
+                header('Location: /detalleNoticia');
+            } else {
+               $this->view->showError('No se pudo actualizar la noticia');
+            }
             
         }
-    }
+    } */
 
 
     function removeNews($id){
