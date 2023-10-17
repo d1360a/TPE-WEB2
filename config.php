@@ -5,4 +5,4 @@
  const MYSQL_DB = 'db_diario';
  const MYSQL_HOST = 'localhost';
 
- CONFIG puto
+//comentario de prueba
