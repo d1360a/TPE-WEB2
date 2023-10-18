@@ -59,6 +59,7 @@ switch ($params[0]) {
 
     #secciones
     case 'eliminar-seccion':
+        AuthHelper::verify_user();
         $controller = new SectionController();
         $controller->deleteSection($params[1]);
         break;

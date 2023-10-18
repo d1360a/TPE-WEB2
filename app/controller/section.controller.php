@@ -22,6 +22,7 @@ class SectionController
 
   #agrega una seccion nueva en la db
   public function addSection(){
+    AuthHelper::verify_user();
     $sectionName = $_POST['section-name'];
     
     if (empty($sectionName)) {
@@ -46,12 +47,16 @@ class SectionController
 
   #elimina la seccion elegida por id
   public function deleteSection($id)
-  {
+  {    
+    AuthHelper::verify_user();
+
     $this->modelSection->delete_section($id);
     header('Location: ' . BASE_URL );
   }
 
   public function showEditionPage($id){
+    AuthHelper::verify_user();
+
     $section = $this->modelSection->getSectionsById($id);
       $this->view->show_edition_page($section);
   }

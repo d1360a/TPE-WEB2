@@ -11,12 +11,11 @@
             <p class="h3"> Agregar sección </p>
             <?php require 'templates/form.add.section.phtml' ?>
         </div>
-
         <div class="container-fluid">
             <?php require 'templates/sections.list.phtml' ?>
         </div>
     <?php endif?>
-
+    
 
 
 
@@ -25,9 +24,9 @@
             <?php foreach($newss as $news): ?>
                 <div class="col border p-3">
                     <a href="detalleNoticia/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
-                    <p>me falta poner la seccion</p>
+                    <p><?= $news->id_seccion?></p>
 
-                    <?php if(isset($_SESSION['USERNAME'])): ?>
+                    <?php if(isset($_SESSION['USER_ID'])): ?>
                         <div class="actions">
                             
                             <a href="eliminarNoticia/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
