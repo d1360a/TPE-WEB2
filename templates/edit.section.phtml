@@ -1,0 +1,12 @@
+<?php require './templates/header.phtml'; ?>
+
+<form action="<?= BASE_URL ?>seccion-editada/<?= $section->id_seccion ?>" method="POST">
+
+     <div>
+          <label for="">Nuevo nombre</label>
+          <input name="new-name" type="text" value="<?= $section->nombre_seccion?>">
+     </div>
+     <button type="submit">Cofirmar</button>
+</form>
+
+<?php require './templates/footer.phtml'; ?>

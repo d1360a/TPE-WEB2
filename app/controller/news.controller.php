@@ -3,6 +3,7 @@
 require_once('app/view/news.view.php');
 require_once('app/model/news.model.php');
 require_once('app/model/section.model.php');
+// require_once('app/helper/auth.helper.php');
 
 class NewsController
 {
@@ -23,7 +24,6 @@ class NewsController
         $sections = $this->modelSection->getSections();
         $newss = $this->modelNews->getNews();
         $this->view->showNews($newss, $sections);
-        var_dump(MYSQL_HOST);
     }
 
 

@@ -9,15 +9,14 @@ class SectionView
           require('./templates/section.page.phtml');
      }
 
-     #muestra el formulario de edicion de secciones
-     public function show_edit_form($sectionData)
-     {
-          require('./templates/form.editar.phtml');
-     }
 
      #muestra un mensaje de error 
      public function show_error_section($error){
           require './templates/error.phtml';
+     }
+
+     public function show_edition_page($section){
+          require './templates/edit.section.phtml';
      }
 
 }

@@ -59,6 +59,7 @@ switch ($params[0]) {
 
     #secciones
     case 'eliminar-seccion':
+        AuthHelper::verify_user();
         $controller = new SectionController();
         $controller->deleteSection($params[1]);
         break;
@@ -72,9 +73,13 @@ switch ($params[0]) {
         break;
     case 'editar-seccion':
         $controller = new SectionController();
-        $controller->editSection($params[1]);
+        $controller->showEditionPage($params[1]);
         break;
-
+    case 'seccion-editada':
+        $controller = new SectionController();
+        $controller->uploadSectionChanges($params[1]);
+        break;
+        
     #autenticacion
     case 'login':
         $controller = new AuthController();
