@@ -4,26 +4,32 @@ require_once('app/view/news.view.php');
 require_once('app/model/news.model.php');
 require_once('app/model/section.model.php');
 
-class NewsController{
-    
+class NewsController
+{
+
     private $modelNews;
     private $view;
     private $modelSection;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->modelNews = new NewsModel();
         $this->view = new NewsView();
         $this->modelSection = new SectionModel();
     }
 
-    public function showNews(){
+    public function showNews()
+    {
         $sections = $this->modelSection->getSections();
         $newss = $this->modelNews->getNews();
         $this->view->showNews($newss, $sections);
         var_dump(MYSQL_HOST);
     }
 
-    public function addNews(){
+
+    public function addNews()
+    {
+        AuthHelper::verify_user();
 
         $title = $_POST['title'];
         $content = $_POST['content'];
@@ -46,33 +52,37 @@ class NewsController{
 
 
 
-    public function editNews($id){
-        
+    public function editNews($id)
+    {
+        AuthHelper::verify_user();
         #validacion de datos
 
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $date = $_POST['date'];
-            $hour = $_POST['hour'];
-            $idSection = $_POST['id_section'];
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = $_POST['date'];
+        $hour = $_POST['hour'];
+        $idSection = $_POST['id_section'];
 
-            $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
-        
-            header('Location: ' . BASE_URL . "detalleNoticia/$id");
+        $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
+
+        header('Location: ' . BASE_URL . "detalleNoticia/$id");
     }
 
     //if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['date']) && !empty($_POST['hour']) && !empty($_POST['id_section'])){
 
-    function removeNews($id){
+    public function removeNews($id)
+    {   AuthHelper::verify_user();
         $this->modelNews->deleteNews($id);
         header('Location: ' . BASE_URL);
     }
 
 
-    function detailNews($id){
+    public function detailNews($id)
+    {
         $news = $this->modelNews->getNewsById($id);
-        $sections = $this-> modelSection->getSections();
-        
+        $sections = $this->modelSection->getSections();
+
         $this->view->newsDetail($news, $sections);
     }
+    
 }

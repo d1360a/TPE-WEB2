@@ -21,11 +21,8 @@
             <?php foreach($newss as $news): ?>
                 <div class="col border p-3">
                     <a href="detalleNoticia/<?=$news->id ?>"><b><?= $news->titulo ?></b></a>
-                    <p>me falta poner la seccion</p>
-
                     <?php if(isset($_SESSION['USERNAME'])): ?>
                         <div class="actions">
-                            
                             <a href="eliminarNoticia/<?= $news->id ?>" type="button" class="btn btn-danger ml-auto">Borrar</a>
                         </div>
                     <?php endif ?>

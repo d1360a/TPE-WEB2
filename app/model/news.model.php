@@ -27,7 +27,12 @@ class NewsModel extends Model{
         $query->execute([$title, $content, $date, $hour, $sectionID, $id]);
     }
         
-
+    function getSectionByNews($id){
+        $query = $this->db->prepare('SELECT seccion.nombre_seccion FROM seccion INNER JOIN noticias ON noticias.id_seccion = seccion.id_seccion WHERE noticias.id = ?');
+        $query->execute([$id]);
+        $filter = $query->fetchAll(PDO::FETCH_OBJ);
+        return $filter;
+    }
 
     function deleteNews($id) {
         $query = $this->db->prepare('DELETE FROM noticias WHERE id = ?');

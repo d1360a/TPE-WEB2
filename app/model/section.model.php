@@ -40,4 +40,12 @@ class SectionModel extends Model{
           $query->execute(array(':newName' => $newName, ':id' => $id));
      }
 
+     function getSectionByNews($id){
+          $query = $this->db->prepare('SELECT seccion.nombre_seccion FROM seccion INNER JOIN noticias ON noticias.id_seccion = seccion.id_seccion WHERE noticias.id = ?');
+          $query->execute([$id]);
+          $filter = $query->fetch(PDO::FETCH_OBJ);
+          return $filter;
+      }
+
+      
 }
