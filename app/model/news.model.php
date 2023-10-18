@@ -1,12 +1,12 @@
 <?php
+#incluye el modelo
+require_once 'model.php';
 
-class NewsModel {
-    private $db;
-
-    function __construct() {
-        $this->db = new PDO('mysql:host=localhost;dbname=db_diario;charset=utf8', 'root', '');
-    }
-
+#Se extiende la clase model que hereda propiedades y metodos de Model
+class NewsModel extends Model{
+    #se borró private db porque ya esta definida en la clase Model
+    #se borró la funcion construct
+    
     function getNews() {
         $query = $this->db->prepare('SELECT * FROM noticias');
         $query->execute();
@@ -25,10 +25,14 @@ class NewsModel {
     function updateNews($id, $title, $content, $date, $hour, $sectionID){
         $query = $this->db->prepare('UPDATE noticias SET titulo = ?, contenido = ?, fecha = ?, hora = ?, id_seccion = ? WHERE id = ?');
         $query->execute([$title, $content, $date, $hour, $sectionID, $id]);
-        return $query;
     }
         
-
+    function getSectionByNews($id){
+        $query = $this->db->prepare('SELECT seccion.nombre_seccion FROM seccion INNER JOIN noticias ON noticias.id_seccion = seccion.id_seccion WHERE noticias.id = ?');
+        $query->execute([$id]);
+        $filter = $query->fetchAll(PDO::FETCH_OBJ);
+        return $filter;
+    }
 
     function deleteNews($id) {
         $query = $this->db->prepare('DELETE FROM noticias WHERE id = ?');

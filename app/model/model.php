@@ -1,23 +1,36 @@
 <?php
 
-  require './config.php';
-    class Model {
-        protected $db;
-        private $hash;
-        function __construct() {
-            $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
-            $this->db = new PDO('mysql:host='. MYSQL_HOST .';dbname='. MYSQL_DB .';charset=utf8', MYSQL_USER, MYSQL_PASS);
-            $this->deploy();
-        }
+require_once './config.php';
+class Model
+{
+  protected $db;
+  private $hash;
 
-        function deploy() {
-            // Chequear si hay tablas
-            $query = $this->db->query('SHOW TABLES');
-            $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
-            if(count($tables)==0) {
-                // Si no hay crearlas
-                $sql =<<<END
+  function __construct()
+  {
+    $this->createDatabaseIfNotExists();
+    $this->db = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB . ';charset=utf8', MYSQL_USER, MYSQL_PASS);
+    $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
+    $this->deploy();
+  }
+
+  
+  private function createDatabaseIfNotExists()
+  {
+    $pdo = new PDO('mysql:host=' . MYSQL_HOST, MYSQL_USER, MYSQL_PASS);
+    $pdo->exec('CREATE DATABASE IF NOT EXISTS ' . MYSQL_DB);
+  }
+
+  public function deploy()
+  {
+    // Chequear si hay tablas
+    $query = $this->db->query('SHOW TABLES');
+    $tables = $query->fetchAll(); // Nos devuelve todas las tablas de la db
+    if (count($tables) == 0) {
+      // Si no hay crearlas
+      $sql = <<<END
                 -- --------------------------------------------------------
+
 
                 --
                 -- Estructura de tabla para la tabla `noticias`
@@ -159,8 +172,7 @@
                   ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`);
                 COMMIT;
                 END;
-                $this->db->query($sql);
-            }
-            
-        }
+      $this->db->query($sql);
     }
+  }
+}

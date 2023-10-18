@@ -3,26 +3,34 @@
 require_once('app/view/news.view.php');
 require_once('app/model/news.model.php');
 require_once('app/model/section.model.php');
+// require_once('app/helper/auth.helper.php');
 
-class NewsController{
-    
-    private $model;
+class NewsController
+{
+
+    private $modelNews;
     private $view;
     private $modelSection;
 
-    public function __construct(){
-        $this->model = new NewsModel();
+    public function __construct()
+    {
+        $this->modelNews = new NewsModel();
         $this->view = new NewsView();
         $this->modelSection = new SectionModel();
     }
 
-    public function showNews(){
+    public function showNews()
+    {
         $sections = $this->modelSection->getSections();
-        $newss = $this->model->getNews();
+        $newss = $this->modelNews->getNews();
         $this->view->showNews($newss, $sections);
     }
 
-    public function addNews(){
+
+    public function addNews()
+    {
+        AuthHelper::verify_user();
+
         $title = $_POST['title'];
         $content = $_POST['content'];
         $date = $_POST['date'];
@@ -34,7 +42,7 @@ class NewsController{
             return;
         }
 
-        $id = $this->model->insertNews($title, $content, $date, $hour, $id_section);
+        $id = $this->modelNews->insertNews($title, $content, $date, $hour, $id_section);
         if ($id) {
             header('Location: ' . BASE_URL);
         } else {
@@ -44,34 +52,37 @@ class NewsController{
 
 
 
-    public function editNews($id){
+    public function editNews($id)
+    {
+        AuthHelper::verify_user();
+        #validacion de datos
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $title = $_POST['title'];
+        $content = $_POST['content'];
+        $date = $_POST['date'];
+        $hour = $_POST['hour'];
+        $idSection = $_POST['id_section'];
 
-            $title = $_POST['title'];
-            $content = $_POST['content'];
-            $date = $_POST['date'];
-            $hour = $_POST['hour'];
-            $idSection = $_POST['section_id'];
+        $this->modelNews->updateNews($id, $title, $content, $date, $hour, $idSection);
 
-            $success=$this->model->updateNews($id, $title, $content, $date, $hour, $idSection);
-            
-           
-            
-        }
+        header('Location: ' . BASE_URL . "detalleNoticia/$id");
     }
 
+    //if(!empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['date']) && !empty($_POST['hour']) && !empty($_POST['id_section'])){
 
-    function removeNews($id){
-        $this->model->deleteNews($id);
+    public function removeNews($id)
+    {   AuthHelper::verify_user();
+        $this->modelNews->deleteNews($id);
         header('Location: ' . BASE_URL);
     }
 
 
-    function detailNews($id){
-        $news = $this->model->getNewsById($id);
-        $sections = $this-> modelSection->getSections();
-        
+    public function detailNews($id)
+    {
+        $news = $this->modelNews->getNewsById($id);
+        $sections = $this->modelSection->getSections();
+
         $this->view->newsDetail($news, $sections);
     }
+    
 }

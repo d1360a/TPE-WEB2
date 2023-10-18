@@ -2,26 +2,33 @@
 
 
 <div class="container">
-    
-    <?php if ($news !== false) { ?>
-        <?php var_dump($news) ?>
+
+    <?php if (!empty($news->id)): ?>
         <h1><?= $news->titulo ?></h1>
         <small><?= $news->fecha ?></small>
         <small><?= $news->hora ?></small>
+        
         <div class="mt-1 p-2">
             <p class="lead"><?= $news->contenido ?></p>
         </div>
-        
-    <?php } else { ?>
+
+    <?php  else: ?>
         <p>La noticia no fue encontrada o no está disponible.</p>
-    <?php } ?>
-    
-   
+    <?php endif ?>
+
 
 </div>
 
-    <?php require 'templates/edit.form.news.phtml' ?>
+<?php if (isset($_SESSION['USERNAME'])) : ?>
+
+<?php require './templates/edit.form.news.phtml' ?>
+<?php endif; ?>
+
+<a href="../listarNoticias">Volver a Página principal</a>
 
 
-        <a href="../listarNoticias">Volver a Página principal</a>   
+
+
+
+
 <?php require 'templates/footer.phtml' ?>

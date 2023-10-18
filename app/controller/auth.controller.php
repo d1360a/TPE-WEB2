@@ -5,12 +5,12 @@ require('./app/view/auth.view.php');
 require('./app/helper/auth.helper.php');
 
 class AuthController {
-     private $model;
+     private $modelUser;
      private $view;
 
      public function __construct()
      {
-          $this -> model = new UserModel;
+          $this -> modelUser = new UserModel;
           $this -> view = new AuthView;
      }
 
@@ -32,7 +32,7 @@ class AuthController {
           }
 
           #obtencion del user de la BBDD
-          $user = $this -> model -> get_user_by_username($username);
+          $user = $this -> modelUser -> get_user_by_username($username);
           
           #autenticacion usuario
           if($user && password_verify($password, $user -> password)){

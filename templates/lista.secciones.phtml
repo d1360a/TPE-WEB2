@@ -1,31 +1,8 @@
 <!-- lista de secciones en el encabezado de la pagina -->
 <?php foreach ($sections as $section) : ?>
      <li class="navbar-brand">
-          <a class=" nav-link" href="mostrar-seccion/<?= $section->id_seccion ?>">
+          <a class="nav-link" href="mostrar-seccion/<?= $section->id_seccion ?>">
                <?= $section->nombre_seccion ?>
           </a>
-          <?php if(isset($_SESSION['USERNAME'])): ?>
-          <div  class="form-container">
-               <!-- Formulario de edicion de secciones -->
-               <form class="form-edit" id="form-editar" action="editar-seccion/<?= $section->id_seccion ?>" method="POST">
-                    <div>
-                         <label class="form-label" for="sec-name">Editar seccion</label>
-                         <input class="form-control" id="sec-name" name="secNewName" type="text" value="<?= $section->nombre_seccion?>" autocomplete="off" autocapitalize="on" required>
-                    </div>
-                    <div>
-
-                         <button id="btn-sub" class="btn btn-secondary btn-sm" type="submit">Confirmar</button>
-                    </div>
-               </form>
-          </div>
-
-          <div class="actions">
-               <a class="btn btn-danger btn-sm" href="eliminar-seccion/<?= $section->id_seccion ?>">eliminar</a>
-               <button class="edit-btn btn-sm btn btn-success close-form-btn" data-section-id="<?= $section->id_seccion ?>">editar</button>
-          </div>
-
-
-
-          <?php endif; ?>
      </li>
 <?php endforeach; ?>
