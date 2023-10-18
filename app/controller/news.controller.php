@@ -21,7 +21,6 @@ class NewsController{
         $sections = $this->modelSection->getSections();
         $newss = $this->modelNews->getNews();
         $this->view->showNews($newss, $sections);
-        var_dump(MYSQL_HOST);
     }
 
     public function addNews(){
