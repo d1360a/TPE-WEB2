@@ -36,14 +36,15 @@
                          <?php require('./templates/lista.secciones.phtml'); ?>
                     <?php endif; ?>
                     
+                    <!-- Se agrego BASE URL para que vuelva al inicio y valla al login desde cualquier parte -->
                     <!-- verificacion de inicio de sesion se muestra login o logout -->
                     <?php if (!isset($_SESSION['USER_ID'])) : ?>
                          <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="login">INICIAR SESION</a>
+                              <a class="nav-link" aria-current="page" href= "<?= BASE_URL?>/login">INICIAR SESION</a>
                          </li>
                     <?php else : ?>
                          <li class="nav-item">
-                              <a class="nav-link" aria-current="page" href="logout">CERRAR SESION</a>
+                              <a class="nav-link" aria-current="page" href="../logout">CERRAR SESION</a>
                          </li>
                     <?php endif ?>
                </ul>

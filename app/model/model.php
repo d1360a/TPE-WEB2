@@ -161,6 +161,7 @@ class Model
                 ALTER TABLE `usuario`
                   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
                 
+                ALTER TABLE `noticias` ADD `comentarios` TEXT NULL AFTER `id_seccion`;
                 --
                 -- Restricciones para tablas volcadas
                 --

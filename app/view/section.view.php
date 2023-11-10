@@ -9,7 +9,6 @@ class SectionView
           require('./templates/section.page.phtml');
      }
 
-
      #muestra un mensaje de error 
      public function show_error_section($error){
           require './templates/error.phtml';
