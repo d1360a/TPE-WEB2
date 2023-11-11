@@ -170,6 +170,33 @@ class Model
                 --
                 ALTER TABLE `noticias`
                   ADD CONSTRAINT `noticias_ibfk_1` FOREIGN KEY (`id_seccion`) REFERENCES `seccion` (`id_seccion`);
+                  CREATE TABLE `comentarios` (
+                    `id` int(11) NOT NULL,
+                    `contenido` text NOT NULL,
+                    `id_noticia` int(11) NOT NULL
+                  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                  
+                  --
+                  -- Índices para tablas volcadas
+                  --
+                  
+                  --
+                  -- Indices de la tabla `comentarios`
+                  --
+                  ALTER TABLE `comentarios`
+                    ADD PRIMARY KEY (`id`),
+                    ADD KEY `CLAVE FORANEA` (`id_noticia`);
+                  
+                  --
+                  -- AUTO_INCREMENT de las tablas volcadas
+                  --
+                  
+                  --
+                  -- AUTO_INCREMENT de la tabla `comentarios`
+                  --
+                  ALTER TABLE `comentarios`
+                    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+                  
                 COMMIT;
                 END;
       $this->db->query($sql);
