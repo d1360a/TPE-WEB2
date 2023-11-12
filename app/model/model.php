@@ -4,13 +4,15 @@ require_once './config.php';
 class Model
 {
   protected $db;
-  private $hash;
+  private $adminpass;
+  private $userpass;
 
   function __construct()
   {
     $this->createDatabaseIfNotExists();
     $this->db = new PDO('mysql:host=' . MYSQL_HOST . ';dbname=' . MYSQL_DB . ';charset=utf8', MYSQL_USER, MYSQL_PASS);
-    $this->hash = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
+    $this->adminpass = '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru';
+    $this->userpass = '$2y$10$Hn30eeol8fDlPB2.h1aTNOvBDaCRxX6CdadW.iumdTt3v2iFA5RQ2';
     $this->deploy();
   }
 
@@ -114,7 +116,10 @@ class Model
                 --
                 
                 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
-                (2, 'webadmin', 'webadmin@correo.com', '{$this->hash}', 1);
+                (2, 'webadmin', 'webadmin@correo.com', '{$this->adminpass}', 1);
+
+                INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
+                (3, 'webadmin', 'webuser@correo.com', '{$this->userpass}', 0);
                 
                 --
                 -- Índices para tablas volcadas

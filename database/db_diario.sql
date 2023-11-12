@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2023 a las 00:20:59
+-- Tiempo de generación: 12-11-2023 a las 23:35:49
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_diario`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL,
+  `contenido` text NOT NULL,
+  `id_noticia` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id`, `contenido`, `id_noticia`) VALUES
+(1, 'Nuevo comentario desde postman', 21);
 
 -- --------------------------------------------------------
 
@@ -61,7 +80,9 @@ INSERT INTO `noticias` (`id`, `titulo`, `contenido`, `fecha`, `hora`, `id_seccio
 (18, 'La fotografía de un cangrejo herradura, una especie prehistórica, gana un prestigioso premio', 'El biólogo marino y fotógrafo francés Laurent Ballesta obtuvo el máximo galardón del concurso Wildlife Photographer of the Year 2023 con su retrato de una rara variedad de cangrejo en peligro de extinción.\r\nUna hipnótica imagen de un cangrejo herradura, una especie que sobrevivió más de cien millones de años, tomada por el fotógrafo submarino y biólogo francés Laurent Ballesta en la isla filipina de Pangatalan, fue galardonada con el premio “Wildlife Photographer of the Year 2023″ (Fotógrafo de la Vida Silvestre del Año), un prestigioso concurso al que aplicaron más de 49.000 candidaturas de 95 países.\r\n\r\n“La herradura dorada” se titula la fotografía ganadora del premio mayor del concurso, que captura a un cangrejo de tres espinas mientras camina lentamente sobre el barro, en lo profundo del mar, con su caparazón protector dorado, una especie cuya sangre azul es utilizada en el desarrollo de vacunas, y que se enfrenta a la destrucción de su hábitat, informaron los organizadores en un comunicado.\r\n\r\nEs la segunda vez que Laurent Ballesta -biólogo marino y fotógrafo que ha dedicado su vida a explorar los océanos y revelar sus maravillas a través del arte- obtiene el premio Wildlife Photographer of the Year 2023, que organiza el Museo de Historia Natural de Londres, donde la exposición con las imágenes premiadas se inaugurará el viernes próximo.\r\n\r\n“Ver un cangrejo herradura tan vibrantemente vivo en su hábitat natural, de una forma tan inquietantemente bella, fue asombroso. Estamos ante una especie antigua, en grave peligro de extinción, y también fundamental para la salud humana. Esta foto es luminiscente”, afirmó la presidenta del jurado Kathy Moran.', '11/10/23', '02:46:00', 7),
 (19, 'Daniel Barenboim condena el ataque de Hamas y el asedio israelí de Gaza', '“El único camino hacia la paz entre Israel y Palestina reposa en el humanismo, la justicia, la igualdad y el fin de la ocupación, más que en una acción militar”, dijo el destacado músico argentino-israelí, y expresó su “solidaridad con las víctimas y sus familias”.\r\nEl pianista y director de orquesta Daniel Barenboim calificó de “crimen escandaloso” el ataque de Hamás contra “la población civil israelí”, al tiempo que condenó el actual asedio militar a la Franja de Gaza.\r\n“El ataque de Hamas contra la población civil israelí es un crimen escandaloso que condeno enérgicamente”, escribió en un comunicado difundido el miércoles en varias redes sociales. “La magnitud de esta tragedia humana” no se mide sólo “en vidas perdidas, sino también en tomas de rehenes, casas destruidas y comunidades devastadas”, explicó.\r\nEl maestro, nacido en Argentina y también ciudadano israelí y español, condenó igualmente el “asedio israelí a Gaza”, un “castigo colectivo que es una violación de los derechos humanos”.\r\nDaniel Barenboim es conocido desde hace mucho tiempo por su compromiso con la paz, especialmente a través de la Orquesta del West-Eastern Divan fundada en 1999 junto con el pensador palestino-estadounidense Edward Said. Esta formación ha venido reuniendo durante años a músicos israelíes y de los países árabes vecinos.', '11/10/23', '16:04:00', 7),
 (21, 'Salman Rushdie revela en “Cuchillo” los detalles del atentado que marcó su vida', 'En abril del año que viene saldrán a la venta las memorias del reconocido escritor, según anunció la editorial.\r\nLa editorial Penguin Random House ha confirmado que el próximo 16 de abril verá la luz Cuchillo, la esperada obra de Salman Rushdie. Este libro, que será publicado en más de 15 países, promete ser un relato profundo sobre el intento de asesinato que sufrió el aclamado autor hace poco más de un año.\r\nSalman Rushdie, ganador del prestigioso Premio Booker y defensor inquebrantable de la libertad de expresión, se ha mantenido en el epicentro de la controversia desde que su novela “Los versos satánicos” generó una fatwa en su contra hace tres décadas. Sin embargo, nada lo había preparado para el brutal ataque que enfrentó en agosto de 2022. El agresor de Rushdie, Hadi Matar, un estadounidense de origen libanés de 24 años, se declaró inocente de intento de asesinato y dijo que sentía aversión hacia Rushdie por haber “atacado el Islam”, pero negó estar en contacto con Irán o haber leído entero su libro “Los versos satánicos”.\r\nEl autor, nacido en Bombay en 1947, recibió más de diez puñaladas a manos de un fanático musulmán, un acto de violencia que le costó la visión de un ojo y dejó prácticamente inutilizada su mano izquierda. Este devastador evento, que marcó un antes y un después en la vida de Rushdie, ha sido el catalizador para la creación de Cuchillo.', '11/10/23', '15:37:00', 7),
-(28, 'Ahora se puede editar', 'Nuevo contenido de noticia', '2023-10-20', '23:33:00', 1);
+(29, 'Increíble hallazgo arqueológico en una antigua ciudad', 'Arqueólogos descubren ruinas que podrían cambiar nuestra comprensión de la historia de la región...', '14/11/2023', '12:00:00', 2),
+(30, 'Increíble hallazgo arqueológico en una antigua ciudad', 'Arqueólogos descubren ruinas que podrían cambiar nuestra comprensión de la historia de la región...', '14/11/2023', '12:00:00', 2),
+(31, 'Creada con permisos de la API', 'Para escribir esta noticia se necesitaron permisos de la API para poder publicarla en la DB', '12/11/2023', '16:44:00', 3);
 
 -- --------------------------------------------------------
 
@@ -85,7 +106,7 @@ INSERT INTO `seccion` (`id_seccion`, `nombre_seccion`) VALUES
 (5, 'Tecnología'),
 (6, 'Policiales'),
 (7, 'Cultura'),
-(25, 'Nueva seccion');
+(19, 'Nueva seccion');
 
 -- --------------------------------------------------------
 
@@ -106,11 +127,19 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
-(2, 'webadmin', 'webadmin@correo.com', '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru', 1);
+(2, 'webadmin', 'webadmin@correo.com', '$2y$10$yHQ/gMTE7Rt3R89dJvX75.X8JVx2EUPAlspKl8dTH.t75t4aTqTru', 1),
+(3, 'webuser', 'webuser@correo.com', '$2y$10$Hn30eeol8fDlPB2.h1aTNOvBDaCRxX6CdadW.iumdTt3v2iFA5RQ2', 0);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `CLAVE FORANEA` (`id_noticia`);
 
 --
 -- Indices de la tabla `noticias`
@@ -136,22 +165,28 @@ ALTER TABLE `usuario`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de la tabla `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `seccion`
 --
 ALTER TABLE `seccion`
-  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_seccion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
