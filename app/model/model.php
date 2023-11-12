@@ -119,7 +119,7 @@ class Model
                 (2, 'webadmin', 'webadmin@correo.com', '{$this->adminpass}', 1);
 
                 INSERT INTO `usuario` (`id_usuario`, `nombre`, `email`, `password`, `rol`) VALUES
-                (3, 'webadmin', 'webuser@correo.com', '{$this->userpass}', 0);
+                (3, 'webuser', 'webuser@correo.com', '{$this->userpass}', 0);
                 
                 --
                 -- Índices para tablas volcadas
